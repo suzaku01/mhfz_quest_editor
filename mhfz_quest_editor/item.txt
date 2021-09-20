@@ -88,14 +88,14 @@ Lightningrod
 （dummy）
 Barrel Lid
 Small Barrel
-Large Barrel		
-Small Barrel Bomb	
-Small Barrel Bomb+	
-Large Barrel Bomb	
-Large Barrel Bomb+	
-Bounce Bomb			
+Large Barrel
+Small Barrel Bomb
+Small Barrel Bomb+
+Large Barrel Bomb
+Large Barrel Bomb+
+Bounce Bomb	
 Bounce Bomb+
-Anti-Dragon Bomb	
+Anti-Dragon Bomb
 イベント爆弾
 Huskberry
 Small Bone Husk
@@ -455,7 +455,7 @@ Blk Blos Shl
 Blk Blos Spine
 Blk Blos Tail
 Blk Blos Cpc
-Vespoid Abdomen		1C9
+Vespoid Abdomen
 Vespoid Shl
 Vespoid Carapace
 Vespoid Wing
@@ -657,14 +657,14 @@ Silver Egg
 Gold Egg
 Map
 First-Aid Med
-Ration				293
+Ration
 Portable Spit
 Mini-Whetstone
 EZ Shock Trap
 EZ Flash Bomb
-EZ Sonic Bomb		298
+EZ Sonic Bomb
 EZ Pitfall Trap
-EZ Barrel Bomb L	29A
+EZ Barrel Bomb L
 Ballista Ammo
 Cannon Ammo
 Old Dragon

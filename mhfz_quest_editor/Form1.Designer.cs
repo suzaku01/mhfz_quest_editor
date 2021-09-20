@@ -32,6 +32,10 @@ namespace mhfz_quest_editor
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label72 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -119,6 +123,10 @@ namespace mhfz_quest_editor
             this.button3 = new System.Windows.Forms.Button();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.label65 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.label51 = new System.Windows.Forms.Label();
@@ -137,6 +145,8 @@ namespace mhfz_quest_editor
             this.label45 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.comboBox11 = new System.Windows.Forms.ComboBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label57 = new System.Windows.Forms.Label();
             this.numericUpDown15 = new System.Windows.Forms.NumericUpDown();
@@ -204,6 +214,8 @@ namespace mhfz_quest_editor
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label34 = new System.Windows.Forms.Label();
@@ -289,26 +301,14 @@ namespace mhfz_quest_editor
             this.textBox222 = new System.Windows.Forms.TextBox();
             this.textBox221 = new System.Windows.Forms.TextBox();
             this.textBox220 = new System.Windows.Forms.TextBox();
+            this.label66 = new System.Windows.Forms.Label();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.label52 = new System.Windows.Forms.Label();
             this.textBox32 = new System.Windows.Forms.TextBox();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label64 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
-            this.label67 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
-            this.label70 = new System.Windows.Forms.Label();
-            this.label71 = new System.Windows.Forms.Label();
-            this.label72 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown139)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown138)).BeginInit();
@@ -528,6 +528,50 @@ namespace mhfz_quest_editor
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Supply";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label72
+            // 
+            this.label72.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label72.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label72.Location = new System.Drawing.Point(902, 88);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(89, 23);
+            this.label72.TabIndex = 120;
+            this.label72.Text = "Amount";
+            this.label72.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label71
+            // 
+            this.label71.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label71.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label71.Location = new System.Drawing.Point(367, 88);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(89, 23);
+            this.label71.TabIndex = 119;
+            this.label71.Text = "Amount";
+            this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label70
+            // 
+            this.label70.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label70.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label70.Location = new System.Drawing.Point(716, 88);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(180, 23);
+            this.label70.TabIndex = 118;
+            this.label70.Text = "Item Name";
+            this.label70.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label69
+            // 
+            this.label69.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label69.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label69.Location = new System.Drawing.Point(181, 88);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(180, 23);
+            this.label69.TabIndex = 117;
+            this.label69.Text = "Item Name";
+            this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label25
             // 
@@ -1345,6 +1389,8 @@ namespace mhfz_quest_editor
             // 
             // comboBox6
             // 
+            this.comboBox6.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox6.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBox6.FormattingEnabled = true;
             this.comboBox6.Location = new System.Drawing.Point(465, 32);
             this.comboBox6.Name = "comboBox6";
@@ -1358,6 +1404,46 @@ namespace mhfz_quest_editor
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(0, 23);
             this.comboBox5.TabIndex = 7;
+            // 
+            // label62
+            // 
+            this.label62.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label62.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label62.Location = new System.Drawing.Point(44, 78);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(481, 621);
+            this.label62.TabIndex = 113;
+            this.label62.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label63
+            // 
+            this.label63.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label63.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label63.Location = new System.Drawing.Point(590, 78);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(428, 149);
+            this.label63.TabIndex = 114;
+            this.label63.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label64
+            // 
+            this.label64.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.label64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label64.Location = new System.Drawing.Point(590, 228);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(428, 231);
+            this.label64.TabIndex = 115;
+            this.label64.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label65
+            // 
+            this.label65.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label65.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label65.Location = new System.Drawing.Point(590, 460);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(428, 239);
+            this.label65.TabIndex = 116;
+            this.label65.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabPage2
             // 
@@ -1594,189 +1680,33 @@ namespace mhfz_quest_editor
             // 
             // comboBox11
             // 
+            this.comboBox11.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox11.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Items.AddRange(new object[] {
-            "None",
-            "Rathian",
-            "Fatalis",
-            "Kelbi",
-            "Mosswine",
-            "Bullfango",
-            "Yian Kut-Ku",
-            "Lao-Shan Lung",
-            "Cephadrome",
-            "Felyne",
-            "Veggie Elder",
-            "Rathalos",
-            "Aptonoth",
-            "Genprey",
-            "Diablos",
-            "Khezu",
-            "Velociprey",
-            "Gravios",
-            "Felyne?",
-            "Vespoid",
-            "Gypceros",
-            "Plesioth",
-            "Basarios",
-            "Melynx",
-            "Hornetaur",
-            "Apceros",
-            "Monoblos",
-            "Velocidrome",
-            "Gendrome",
-            "Rocks",
-            "Ioprey",
-            "Iodrome",
-            "Pugis",
-            "Kirin",
-            "Cephalos",
-            "Giaprey / Giadrome",
-            "Crimson Fatalis",
-            "Pink Rathian",
-            "Blue Yian Kut-Ku",
-            "Purple Gypceros",
-            "Yian Garuga",
-            "Silver Rathalos",
-            "Gold Rathian",
-            "Black Diablos",
-            "White Monoblos",
-            "Red Khezu",
-            "Green Plesioth",
-            "Black Gravios",
-            "Daimyo Hermitaur",
-            "Azure Rathalos",
-            "Ashen Lao-Shan Lung",
-            "Blangonga",
-            "Congalala",
-            "Rajang",
-            "Kushala Daora",
-            "Shen Gaoren",
-            "Great Thunderbug",
-            "Shakalaka",
-            "Yama Tsukami",
-            "Chameleos",
-            "Rusted Kushala Daora",
-            "Blango",
-            "Conga",
-            "Remobra",
-            "Lunastra",
-            "Teostra",
-            "Hermitaur",
-            "Shogun Ceanataur",
-            "Bulldrome",
-            "Anteka",
-            "Popo",
-            "White Fatalis",
-            "Yama Tsukami",
-            "Ceanataur",
-            "Hypnocatrice",
-            "Lavasioth",
-            "Tigrex",
-            "Akantor",
-            "Bright Hypnoc",
-            "Lavasioth Subspecies",
-            "Espinas",
-            "Orange Espinas",
-            "White Hypnoc",
-            "Akura Vashimu",
-            "Akura Jebia",
-            "Berukyurosu",
-            "Cactus",
-            "Gorge Objects",
-            "Gorge Rocks",
-            "Pariapuria",
-            "White Espinas",
-            "Kamu Orugaron",
-            "Nono Orugaron",
-            "Raviente",
-            "Dyuragaua",
-            "Doragyurosu",
-            "Gurenzeburu",
-            "Burukku",
-            "Erupe",
-            "Rukodiora",
-            "Unknown",
-            "Gogomoa",
-            "Kokomoa",
-            "Taikun Zamuza",
-            "Abiorugu",
-            "Kuarusepusu",
-            "Odibatorasu",
-            "Disufiroa",
-            "Rebidiora",
-            "Anorupatisu",
-            "Hyujikiki",
-            "Midogaron",
-            "Giaorugu",
-            "Mi Ru",
-            "Farunokku",
-            "Pokaradon",
-            "Shantien",
-            "Pokara",
-            "Dummy",
-            "Goruganosu",
-            "Aruganosu",
-            "Baruragaru",
-            "Zerureusu",
-            "Gougarf",
-            "Uruki",
-            "Forokururu",
-            "Meraginasu",
-            "Diorekkusu",
-            "Garuba Daora",
-            "Inagami",
-            "Varusaburosu",
-            "Poborubarumu",
-            "Duremudira",
-            "UNK1",
-            "Felyne",
-            "Blue NPC",
-            "UNK2",
-            "Cactus",
-            "Veggie Elders",
-            "Gureadomosu",
-            "Harudomerugu",
-            "Toridcless",
-            "Gasurabazura",
-            "Kusubami",
-            "Yama Kurai",
-            "Dure 3rd Phase",
-            "Zinogre",
-            "Deviljho",
-            "Brachydios",
-            "Berserk Laviente",
-            "Toa Tesukatora",
-            "Barioth",
-            "Uragaan",
-            "Stygian Zinogre",
-            "Guanzorumu",
-            "Starving Deviljho",
-            "UNK3",
-            "Egyurasu",
-            "Voljang",
-            "Nargacuga",
-            "Keoaruboru",
-            "Zenaserisu",
-            "Gore Magala",
-            "Blinking Nargacuga",
-            "Shagaru Magala",
-            "Amatsu",
-            "Eruzerion",
-            "Musou Dure",
-            "Rocks",
-            "Seregios",
-            "Bogabadorumu",
-            "Unknown Blue Barrel",
-            "Musou Bogabadorumu",
-            "Costumed Uruki",
-            "Musou Zerureusu",
-            "PSO2 Rappy",
-            "King Shakalaka"});
             this.comboBox11.Location = new System.Drawing.Point(258, 74);
             this.comboBox11.Name = "comboBox11";
             this.comboBox11.Size = new System.Drawing.Size(120, 23);
             this.comboBox11.TabIndex = 0;
+            // 
+            // label60
+            // 
+            this.label60.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label60.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label60.Location = new System.Drawing.Point(58, 62);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(478, 200);
+            this.label60.TabIndex = 125;
+            this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label61
+            // 
+            this.label61.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label61.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label61.Location = new System.Drawing.Point(561, 62);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(481, 200);
+            this.label61.TabIndex = 126;
+            this.label61.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabPage1
             // 
@@ -1992,6 +1922,8 @@ namespace mhfz_quest_editor
             // 
             // comboBox2
             // 
+            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(209, 65);
             this.comboBox2.Name = "comboBox2";
@@ -2000,6 +1932,8 @@ namespace mhfz_quest_editor
             // 
             // comboBox1
             // 
+            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(209, 36);
             this.comboBox1.Name = "comboBox1";
@@ -2572,6 +2506,26 @@ namespace mhfz_quest_editor
             this.label19.TabIndex = 66;
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label58
+            // 
+            this.label58.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label58.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label58.Location = new System.Drawing.Point(538, 32);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(511, 410);
+            this.label58.TabIndex = 134;
+            this.label58.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label59
+            // 
+            this.label59.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label59.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label59.Location = new System.Drawing.Point(12, 95);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(511, 99);
+            this.label59.TabIndex = 65;
+            this.label59.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -2793,6 +2747,8 @@ namespace mhfz_quest_editor
             // 
             // comboBox7
             // 
+            this.comboBox7.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox7.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBox7.FormattingEnabled = true;
             this.comboBox7.Location = new System.Drawing.Point(438, 30);
             this.comboBox7.Name = "comboBox7";
@@ -3543,6 +3499,36 @@ namespace mhfz_quest_editor
             this.textBox220.Size = new System.Drawing.Size(180, 23);
             this.textBox220.TabIndex = 0;
             // 
+            // label66
+            // 
+            this.label66.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label66.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label66.Location = new System.Drawing.Point(54, 74);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(939, 159);
+            this.label66.TabIndex = 116;
+            this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label67
+            // 
+            this.label67.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.label67.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label67.Location = new System.Drawing.Point(54, 242);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(939, 126);
+            this.label67.TabIndex = 117;
+            this.label67.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label68
+            // 
+            this.label68.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label68.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label68.Location = new System.Drawing.Point(54, 379);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(939, 135);
+            this.label68.TabIndex = 118;
+            this.label68.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.radioButton4);
@@ -3555,6 +3541,30 @@ namespace mhfz_quest_editor
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "HEX";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(336, 6);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(94, 19);
+            this.radioButton4.TabIndex = 81;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "radioButton4";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.Visible = false;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(223, 6);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(94, 19);
+            this.radioButton3.TabIndex = 80;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "radioButton3";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.Visible = false;
             // 
             // label52
             // 
@@ -3578,184 +3588,6 @@ namespace mhfz_quest_editor
             this.textBox32.Size = new System.Drawing.Size(1055, 651);
             this.textBox32.TabIndex = 0;
             this.textBox32.Visible = false;
-            // 
-            // label58
-            // 
-            this.label58.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label58.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label58.Location = new System.Drawing.Point(538, 32);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(511, 410);
-            this.label58.TabIndex = 134;
-            this.label58.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label59
-            // 
-            this.label59.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label59.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label59.Location = new System.Drawing.Point(12, 95);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(511, 99);
-            this.label59.TabIndex = 65;
-            this.label59.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label60
-            // 
-            this.label60.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label60.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label60.Location = new System.Drawing.Point(58, 62);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(478, 200);
-            this.label60.TabIndex = 125;
-            this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label61
-            // 
-            this.label61.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label61.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label61.Location = new System.Drawing.Point(561, 62);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(481, 200);
-            this.label61.TabIndex = 126;
-            this.label61.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label62
-            // 
-            this.label62.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label62.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label62.Location = new System.Drawing.Point(44, 78);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(481, 621);
-            this.label62.TabIndex = 113;
-            this.label62.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label63
-            // 
-            this.label63.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label63.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label63.Location = new System.Drawing.Point(590, 78);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(428, 149);
-            this.label63.TabIndex = 114;
-            this.label63.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label64
-            // 
-            this.label64.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.label64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label64.Location = new System.Drawing.Point(590, 228);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(428, 231);
-            this.label64.TabIndex = 115;
-            this.label64.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label65
-            // 
-            this.label65.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label65.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label65.Location = new System.Drawing.Point(590, 460);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(428, 239);
-            this.label65.TabIndex = 116;
-            this.label65.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label66
-            // 
-            this.label66.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label66.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label66.Location = new System.Drawing.Point(54, 74);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(939, 159);
-            this.label66.TabIndex = 116;
-            this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label68
-            // 
-            this.label68.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label68.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label68.Location = new System.Drawing.Point(54, 379);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(939, 135);
-            this.label68.TabIndex = 118;
-            this.label68.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label67
-            // 
-            this.label67.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.label67.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label67.Location = new System.Drawing.Point(54, 242);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(939, 126);
-            this.label67.TabIndex = 117;
-            this.label67.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label69
-            // 
-            this.label69.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label69.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label69.Location = new System.Drawing.Point(181, 88);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(180, 23);
-            this.label69.TabIndex = 117;
-            this.label69.Text = "Item Name";
-            this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label70
-            // 
-            this.label70.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label70.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label70.Location = new System.Drawing.Point(716, 88);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(180, 23);
-            this.label70.TabIndex = 118;
-            this.label70.Text = "Item Name";
-            this.label70.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label71
-            // 
-            this.label71.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label71.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label71.Location = new System.Drawing.Point(367, 88);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(89, 23);
-            this.label71.TabIndex = 119;
-            this.label71.Text = "Amount";
-            this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label72
-            // 
-            this.label72.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label72.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label72.Location = new System.Drawing.Point(902, 88);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(89, 23);
-            this.label72.TabIndex = 120;
-            this.label72.Text = "Amount";
-            this.label72.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(223, 6);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(94, 19);
-            this.radioButton3.TabIndex = 80;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.Visible = false;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(336, 6);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(94, 19);
-            this.radioButton4.TabIndex = 81;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "radioButton4";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.Visible = false;
             // 
             // Form1
             // 
