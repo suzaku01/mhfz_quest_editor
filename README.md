@@ -2,7 +2,7 @@
 ***This repository is private, and still WIP. If you have a problem or any suggestion feel free to open an issue, or send DM on discord.***
 
 # Description
-Enable you to edit MHF-Z quest file that already decrypted with ReFrontier tool.  
+Enable you to edit MHF-Z quest file.
 Since this is just an editor, repository doesn't contain any quest files, please prepare it by yourself.
 
 # Features
@@ -24,12 +24,22 @@ You can edit,
 ・Force equipment items  
 ・So much small things not listed on here  
 
+# To do
+・Improve UI  
+・Rewrite some codes  
+・Text generaotor for event quest list  
+
 # Installation
 Go releases section and download zip.
 
-# To do
-・Improve UI  
-・Rewrite some codes
-・Text generaotor for event quest list
+# How to use editor
+Run mhfz_quest_editor.exe, and open quest file then edit as you wish.  
+Note that the file should be decrypted with ReFrontier at first.  
+After that push "Done!" button to save.  
+I recommend you to create new file instead of overwrite original one in case.  
+
+# How to load custom quest
+Replace original quest file with yours.  
+If you want to add as new quest you sou should add and edit event quest list file.
 
 # Q&A
