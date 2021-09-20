@@ -44,4 +44,7 @@ I recommend you to create new file instead of overwrite original one just in cas
 Replace original quest file with yours.  
 If you want to add it as new quest you should edit event quest list file.
 
+# Known Issues
+・Unable to load Musou quest properly
+
 # Q&A
