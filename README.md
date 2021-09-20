@@ -30,5 +30,6 @@ Go releases section and download zip.
 # To do
 ・Improve UI  
 ・Rewrite some codes
+・Text generaotor for event quest list
 
 # Q&A
