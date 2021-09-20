@@ -25,7 +25,7 @@ You can edit,
 ・So much small things not listed on here  
 
 # Installation
-Go release section and download zip.
+Go releases section and download zip.
 
 # To do
 ・Improve UI  
