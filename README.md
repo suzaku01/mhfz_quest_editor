@@ -30,7 +30,7 @@ You can edit,
 # To do
 ・Improve UI  
 ・Rewrite some codes  
-・Text generaotor for event quest list  
+・Text generator for event quest list  
 
 # Installation
 Go releases section and download zip.
