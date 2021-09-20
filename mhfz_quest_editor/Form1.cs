@@ -218,7 +218,7 @@ namespace mhfz_quest_editor
                     //Load reward item
                     int RewardInfoStart = BitConverter.ToInt32(ba, 12);
                     int Basenum = 0;
-                    if (SupplyInfoStart == 200)
+                    if (SupplyInfoStart == 512)
                     {
                         //Basenum = SupplyInfoStart - RewardInfoStart;
                         Basenum = BitConverter.ToInt32(ba, 48) - RewardInfoStart;
@@ -326,6 +326,18 @@ namespace mhfz_quest_editor
                     numericUpDown13.Value = BitConverter.ToInt32(ba, 76);
                     numericUpDown14.Value = BitConverter.ToInt32(ba, 84);
                     numericUpDown15.Value = BitConverter.ToInt32(ba, 88);
+
+                    //Load is g
+                    if (ba[337] == 10)
+                    {
+                        radioButton1.Checked = true;
+                        radioButton2.Checked = false;
+                    } else
+                    {
+                        radioButton1.Checked = false;
+                        radioButton2.Checked = true;
+                    }
+
 
                     radioButton3.Checked = true;    //load suc
                     button2.Enabled = true;
