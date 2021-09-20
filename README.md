@@ -40,6 +40,6 @@ I recommend you to create new file instead of overwrite original one just in cas
 
 # How to load custom quest
 Replace original quest file with yours.  
-If you want to add as new quest you sou should add and edit event quest list file.
+If you want to add it as new quest you should edit event quest list file.
 
 # Q&A
