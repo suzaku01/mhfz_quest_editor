@@ -22,7 +22,7 @@ You can edit,
 ・Monster behavior type, appearance  
 ・Fishing  
 ・Force equipment items  
-・So much small things not listed on here  
+・So much small things that are not listed on here  
 
 # To do
 ・Improve UI  
