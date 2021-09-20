@@ -16,6 +16,7 @@ You can edit,
 # Missing features  
 ・Add multiple large monster  
 ・Change map  
+・Set fail condition, time  
 ・Damage and Break Part type quest  
 ・Harvest point and item  
 ・Small monster info  
