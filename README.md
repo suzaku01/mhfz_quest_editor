@@ -36,7 +36,7 @@ Go releases section and download zip.
 Run mhfz_quest_editor.exe, and open quest file then edit as you wish.  
 Note that the file should be decrypted with ReFrontier at first.  
 After that push "Done!" button to save.  
-I recommend you to create new file instead of overwrite original one in case.  
+I recommend you to create new file instead of overwrite original one just in case.  
 
 # How to load custom quest
 Replace original quest file with yours.  
