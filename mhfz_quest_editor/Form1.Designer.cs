@@ -5142,7 +5142,7 @@ namespace mhfz_quest_editor
             // 
             this.numericUpDown9.Location = new System.Drawing.Point(258, 103);
             this.numericUpDown9.Maximum = new decimal(new int[] {
-            99,
+            73,
             0,
             0,
             0});
