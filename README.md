@@ -33,7 +33,7 @@ You can edit,
 ・Text generator for event quest list  
 
 # Installation
-Go releases section and download zip.
+Download repository and build it.
 
 # How to use editor
 Run mhfz_quest_editor.exe, and open quest file then edit as you wish.  
