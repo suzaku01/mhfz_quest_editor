@@ -15,6 +15,9 @@ You can edit,
 
 # Missing features  
 ・Add multiple large monster  
+・Change map  
+・Set fail condition, time  
+・Damage and Break Part type quest  
 ・Harvest point and item  
 ・Small monster info  
 ・Player spawn point  
@@ -27,7 +30,7 @@ You can edit,
 # To do
 ・Improve UI  
 ・Rewrite some codes  
-・Text generaotor for event quest list  
+・Text generator for event quest list  
 
 # Installation
 Go releases section and download zip.
@@ -41,5 +44,8 @@ I recommend you to create new file instead of overwrite original one just in cas
 # How to load custom quest
 Replace original quest file with yours.  
 If you want to add it as new quest you should edit event quest list file.
+
+# Known Issues
+・Unable to load Musou quest properly
 
 # Q&A
