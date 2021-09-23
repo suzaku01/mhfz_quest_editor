@@ -51,7 +51,7 @@ namespace mhfz_quest_editor
                     comboBox8.Text = MainType;
                     if (BitConverter.ToInt32(ba, 240) == 2)
                     {
-                        List.Item.TryGetValue(BitConverter.ToInt16(ba, 244), out string MainObjTgt);
+                        List.Item.TryGetValue(BitConverter.ToInt16(ba, 244), out string MainObjTgt);        //harvest
                         textBox17.Text = MainObjTgt;
                     }
                     else
@@ -92,6 +92,21 @@ namespace mhfz_quest_editor
                     }
                     numericUpDown7.Value = BitConverter.ToInt16(ba, 262);       //amount
                     numericUpDown4.Value = BitConverter.ToInt16(ba, 220);       //money
+
+                    if (BitConverter.ToInt32(ba, 240) == 32772)
+                    {
+                        numericUpDown5.Value = numericUpDown5.Value * 100;
+                    }
+                    if (BitConverter.ToInt32(ba, 248) == 32772)
+                    {
+                        numericUpDown6.Value = numericUpDown6.Value * 100;
+                    }
+                    if (BitConverter.ToInt32(ba, 256) == 32772)
+                    {
+                        numericUpDown7.Value = numericUpDown7.Value * 100;
+                    }
+
+
 
                     //Load text
                     int questStringsStart = BitConverter.ToInt32(ba, 48);       //go and get 4C80
@@ -705,7 +720,12 @@ namespace mhfz_quest_editor
                 eb2[244] = Convert.ToByte(mot, 16);
             }
 
-            byte[] mamt = BitConverter.GetBytes(decimal.ToInt32(numericUpDown5.Value));
+            decimal MainAmount = numericUpDown5.Value;
+            if (comboBox8.SelectedIndex == 4)
+            {
+                MainAmount = MainAmount / 100;
+            }
+            byte[] mamt = BitConverter.GetBytes(decimal.ToInt32(MainAmount));
             eb2[246] = mamt[0];
             eb2[247] = mamt[1];
 
@@ -737,7 +757,12 @@ namespace mhfz_quest_editor
                     eb2[252] = Convert.ToByte(subatt, 16);
                 }
 
-                byte[] subaamt = BitConverter.GetBytes(decimal.ToInt32(numericUpDown6.Value));
+                decimal AAmount = numericUpDown6.Value;
+                if (comboBox9.SelectedIndex == 4)
+                {
+                    AAmount = AAmount / 100;
+                }
+                byte[] subaamt = BitConverter.GetBytes(decimal.ToInt32(AAmount));
                 eb2[254] = subaamt[0];
                 eb2[255] = subaamt[1];
 
@@ -770,9 +795,14 @@ namespace mhfz_quest_editor
                     eb2[252] = Convert.ToByte(subbtt, 16);
                 }
 
-                byte[] subbamt = BitConverter.GetBytes(decimal.ToInt32(numericUpDown7.Value));
-                eb2[254] = subbamt[0];
-                eb2[255] = subbamt[1];
+                decimal BAmount = numericUpDown7.Value;
+                if (comboBox10.SelectedIndex == 4)
+                {
+                    BAmount = BAmount / 100;
+                }
+                byte[] subbamt = BitConverter.GetBytes(decimal.ToInt32(BAmount));
+                eb2[262] = subbamt[0];
+                eb2[263] = subbamt[1];
 
                 byte[] subbtrd = BitConverter.GetBytes(decimal.ToInt32(numericUpDown4.Value));
                 eb2[220] = subbtrd[0];
