@@ -16,8 +16,7 @@ namespace mhfz_quest_editor
             InitializeComponent();
             comboBox1.Items.AddRange(File.ReadAllLines("monster.txt"));
             comboBox2.Items.AddRange(File.ReadAllLines("item.txt"));
-            comboBox6.Items.AddRange(File.ReadAllLines("item.txt"));
-            comboBox7.Items.AddRange(File.ReadAllLines("item.txt"));
+            comboBox11.Items.AddRange(File.ReadAllLines("monster.txt"));
             radioButton3.Checked = false;
             button2.Enabled = false;
         }
@@ -36,111 +35,63 @@ namespace mhfz_quest_editor
                 {
                     textBox32.Text = BitConverter.ToString(ba).Replace("-", string.Empty);
 
-                    //Load location
-                    List.Location.TryGetValue(ba[228], out string lcoation);
+                    int HaveAobj = BitConverter.ToInt16(ba, 248);
+                    int HaveBobj = BitConverter.ToInt16(ba, 256);
+
+                    List.Location.TryGetValue(ba[228], out string lcoation);        //location
                     textBox23.Text = lcoation.ToString();
 
-                    //Load carve rank
-                    List.Rank.TryGetValue(ba[92], out string rank);
+                    List.Rank.TryGetValue(ba[92], out string rank);                 //carve rank
                     comboBox4.Text = rank.ToString();
 
-                    //Load fee
-                    string fee = ba[206].ToString("X2") + ba[205].ToString("X2") + ba[204].ToString("X2");
-                    numericUpDown1.Value = Convert.ToInt32(fee, 16);
+                    numericUpDown1.Value = BitConverter.ToInt16(ba, 204);           //fee
+                    numericUpDown8.Value = BitConverter.ToInt16(ba, 212);           //penalty
 
-                    //Load penalty
-                    string penalty = ba[214].ToString("X2") + ba[213].ToString("X2") + ba[212].ToString("X2");
-                    numericUpDown8.Value = Convert.ToInt32(penalty, 16);
-
-                    /////////////////////////////////////////////////////////////////////////////////////////////////
-
-                    //Load main obj type
-                    string mot = ba[240].ToString("X2") + ba[241].ToString("X2") + ba[242].ToString("X2") + ba[243].ToString("X2");
-                    List.ObjectiveType.TryGetValue(mot, out string mot1);
-                    comboBox8.Text = mot1.ToString();
-
-                    //Load main obj target
-                    if (!(mot == "02000000"))
+                    List.ObjectiveType1.TryGetValue(BitConverter.ToInt32(ba, 240), out string MainType);        //Load main obj type
+                    comboBox8.Text = MainType;
+                    if (BitConverter.ToInt32(ba, 240) == 2)
                     {
-                        string motgt = ba[244].ToString("X2");
-                        List.Monster.TryGetValue(motgt, out string motgt1);
-                        textBox17.Text = motgt1;
+                        List.Item.TryGetValue(BitConverter.ToInt16(ba, 244), out string MainObjTgt);
+                        textBox17.Text = MainObjTgt;
                     }
                     else
                     {
-                        //get item id
-                        int moti = Convert.ToInt32(ba[245].ToString("X2") + ba[244].ToString("X2"), 16);
-                        List.Item.TryGetValue(moti, out string moti1);
-                        textBox17.Text = moti1;
+                        List.Monster1.TryGetValue(BitConverter.ToInt16(ba, 244), out string MainObjTgt);
+                        textBox17.Text = MainObjTgt;
                     }
+                    numericUpDown5.Value = BitConverter.ToInt16(ba, 246);           //amount
+                    numericUpDown2.Value = BitConverter.ToInt16(ba, 208);           //money
 
-                    //Load main obj amount
-                    string moa = ba[247].ToString("X2") + ba[246].ToString("X2");
-                    numericUpDown5.Value = Convert.ToInt32(moa, 16);
-
-                    //Load main obj reward
-                    string mor = ba[210].ToString("X2") + ba[209].ToString("X2") + ba[208].ToString("X2");
-                    numericUpDown2.Value = Convert.ToInt32(mor, 16);
-                    //////////////////////////////////////////////////////////////////////////////////////////
-
-                    //Load suba obj type
-                    string subaot = ba[248].ToString("X2") + ba[249].ToString("X2") + ba[250].ToString("X2") + ba[251].ToString("X2");
-                    List.ObjectiveType.TryGetValue(subaot, out string subaot1);
-                    comboBox9.Text = subaot1;
-
-                    //Load suba obj target
-                    if (!(subaot == "02000000"))
+                    List.ObjectiveType1.TryGetValue(BitConverter.ToInt32(ba, 248), out string AType);
+                    comboBox9.Text = AType;
+                    if (BitConverter.ToInt32(ba, 248) == 2)
                     {
-                        string sub1otgt = ba[252].ToString("X2");
-                        List.Monster.TryGetValue(sub1otgt, out string sub1otgt1);
-                        textBox18.Text = sub1otgt1;
+                        List.Item.TryGetValue(BitConverter.ToInt16(ba, 252), out string AObjTgt);
+                        textBox18.Text = AObjTgt;
                     }
                     else
                     {
-                        //get item id
-                        int sub1ti = Convert.ToInt32(ba[253].ToString("X2") + ba[252].ToString("X2"), 16);
-                        List.Item.TryGetValue(sub1ti, out string sub1ti1);
-                        textBox18.Text = sub1ti1;
+                        List.Monster1.TryGetValue(BitConverter.ToInt16(ba, 252), out string AObjTgt);
+                        textBox18.Text = AObjTgt;
                     }
+                    numericUpDown6.Value = BitConverter.ToInt16(ba, 254);
+                    numericUpDown3.Value = BitConverter.ToInt16(ba, 216);
 
-                    //Load suba obj amount
-                    string sub1oa = ba[255].ToString("X2") + ba[254].ToString("X2"); //0A50
-                    numericUpDown6.Value = Convert.ToInt32(sub1oa, 16);
+                    List.ObjectiveType1.TryGetValue(BitConverter.ToInt32(ba, 256), out string BType);
+                    comboBox10.Text = BType.ToString();
 
-                    //Load suba obj reward
-                    string subaor = ba[218].ToString("X2") + ba[217].ToString("X2") + ba[216].ToString("X2");
-                    numericUpDown3.Value = Convert.ToInt32(subaor, 16);
-                    ////////////////////////////////////////////////////////////////////////////////
-
-                    //Load subb obj type
-                    string subbot = ba[256].ToString("X2") + ba[257].ToString("X2") + ba[258].ToString("X2") + ba[259].ToString("X2");
-                    List.ObjectiveType.TryGetValue(subbot, out string subbot1);
-                    comboBox10.Text = subbot1.ToString();
-
-                    //Load subb obj target
-                    if (!(subbot == "02000000"))
+                    if (BitConverter.ToInt32(ba, 256) == 2)
                     {
-                        string subbotgt = ba[260].ToString("X2");
-                        List.Monster.TryGetValue(subbotgt, out string subbotgt1);
-                        textBox19.Text = subbotgt1;
+                        List.Item.TryGetValue(BitConverter.ToInt16(ba, 260), out string BObjTgt);
+                        textBox19.Text = BObjTgt;
                     }
                     else
                     {
-                        //get item id
-                        int subbti = Convert.ToInt32(ba[261].ToString("X2") + ba[260].ToString("X2"), 16);
-                        List.Item.TryGetValue(subbti, out string subbti1);
-                        textBox19.Text = subbti1;
-
+                        List.Monster1.TryGetValue(BitConverter.ToInt16(ba, 260), out string BObjTgt);
+                        textBox19.Text = BObjTgt;
                     }
-
-                    //Load subb obj amount
-                    string subboa = ba[263].ToString("X2") + ba[262].ToString("X2");
-                    numericUpDown7.Value = Convert.ToInt32(subboa, 16);
-
-                    //Load subb obj reward
-                    string subbor = ba[223].ToString("X2") + ba[222].ToString("X2") + ba[221].ToString("X2") + ba[220].ToString("X2");
-                    numericUpDown4.Value = Convert.ToInt32(subbor, 16);
-                    ///////////////////////////////////////////////////////////////////////////////////////
+                    numericUpDown7.Value = BitConverter.ToInt16(ba, 262);       //amount
+                    numericUpDown4.Value = BitConverter.ToInt16(ba, 220);       //money
 
                     //Load text
                     int questStringsStart = BitConverter.ToInt32(ba, 48);       //go and get 4C80
@@ -217,102 +168,130 @@ namespace mhfz_quest_editor
 
                     //Load reward item
                     int RewardInfoStart = BitConverter.ToInt32(ba, 12);
-                    int Basenum = 0;
-                    if (SupplyInfoStart == 512)
+                    int MRewardPointer = 0;
+                    int ARewardPointer = 0;
+                    int BRewardPointer = 0;
+                    int An1RewardPointer = 0;
+                    int An2RewardPointer = 0;
+                    byte[] RewardHeaderArray = ba.Skip(RewardInfoStart).Take(48).ToArray();
+                    byte[] MRewardData = { };
+                    byte[] ARewardData = { };
+                    byte[] BRewardData = { };
+                    byte[] An1RewardData = { };
+                    byte[] An2RewardData = { };
+
+
+                    for (int i = 0; i < 5; i++)
                     {
-                        //Basenum = SupplyInfoStart - RewardInfoStart;
-                        Basenum = BitConverter.ToInt32(ba, 48) - RewardInfoStart;
+                        switch (RewardHeaderArray[i * 8])
+                        {
+                            case 1:
+                                MRewardPointer = BitConverter.ToInt32(RewardHeaderArray, 4);
+                                MRewardData = ba.Skip(MRewardPointer).Take(244).ToArray();
+                                break;
+                            case 2:
+                                ARewardPointer = BitConverter.ToInt32(RewardHeaderArray, 12);
+                                ARewardData = ba.Skip(ARewardPointer).Take(244).ToArray();
+                                break;
+                            case 3:
+                                BRewardPointer = BitConverter.ToInt32(RewardHeaderArray, 20);
+                                BRewardData = ba.Skip(BRewardPointer).Take(244).ToArray();
+                                break;
+                            case 4:
+                                An1RewardPointer = BitConverter.ToInt32(RewardHeaderArray, 28);
+                                An1RewardData = ba.Skip(An1RewardPointer).Take(244).ToArray();
+                                break;
+                            case 5:
+                                An2RewardPointer = BitConverter.ToInt32(RewardHeaderArray, 36);
+                                An2RewardData = ba.Skip(An2RewardPointer).Take(244).ToArray();
+                                break;
+                        }
                     }
-                    else
+
+                    for (int i = 10; i < 50; i++)
                     {
-                        //Basenum =  BitConverter.ToInt32(ba, 48) - RewardInfoStart;
-                        Basenum = SupplyInfoStart - RewardInfoStart;
-                    }
+                        int MainRewardBase = (i - 10) * 6;
 
-
-                    int HaveAobj = Convert.ToInt32(ba[248].ToString("X2") + ba[249].ToString("X2") + ba[250].ToString("X2") + ba[251].ToString("X2"));
-                    int HaveBobj = Convert.ToInt32(ba[256].ToString("X2") + ba[257].ToString("X2") + ba[258].ToString("X2") + ba[259].ToString("X2"));
-                    byte[] RewardInfoHeader = File.ReadAllBytes(fileloc).Skip(RewardInfoStart).Take(Basenum - 24).ToArray();
-
-                    int MainRewardOffset = Convert.ToInt32(RewardInfoHeader[5].ToString("X2") + RewardInfoHeader[4].ToString("X2"), 16);
-                    int ARewardOffset = Convert.ToInt32(RewardInfoHeader[13].ToString("X2") + RewardInfoHeader[12].ToString("X2"), 16);
-                    int BRewardOffset = Convert.ToInt32(RewardInfoHeader[21].ToString("X2") + RewardInfoHeader[20].ToString("X2"), 16);
-
-                    byte[] MainRewardText = File.ReadAllBytes(fileloc).Skip(MainRewardOffset).Take(48).ToArray();
-                    byte[] ARewardText = File.ReadAllBytes(fileloc).Skip(ARewardOffset).Take(48).ToArray();
-                    byte[] BRewardText = File.ReadAllBytes(fileloc).Skip(BRewardOffset).Take(48).ToArray();
-
-                    for (int i = 0; i < 8; i++)
-                    {
-                        //Load chance
-                        int MainRewardChance = MainRewardText[i * 6];
+                        int MainRewardChance = MRewardData[MainRewardBase];
                         if (MainRewardChance == 255)
                         {
                             break;
                         }
-                        ((NumericUpDown)this.Controls.Find("numericUpDown20" + i.ToString(), true)[0]).Value = MainRewardChance;
+                        ((NumericUpDown)this.Controls.Find("R12" + i.ToString(), true)[0]).Value = MainRewardChance;
 
-                        //Load amount
-                        int MainRewardAmount = MainRewardText[i * 6 + 4];
-                        ((NumericUpDown)this.Controls.Find("numericUpDown21" + i.ToString(), true)[0]).Value = MainRewardAmount;
+                        ((NumericUpDown)this.Controls.Find("R11" + i.ToString(), true)[0]).Value = MRewardData[MainRewardBase + 4];
 
-                        //Load id
-                        int MainRewardId = Convert.ToInt32(MainRewardText[i * 6 + 3].ToString("X2") + MainRewardText[i * 6 + 2].ToString("X2"), 16);
-                        List.Item.TryGetValue(MainRewardId, out string MainRewardName);
-                        ((TextBox)this.Controls.Find("textBox22" + i.ToString(), true)[0]).Text = MainRewardName;
+                        int MainRewardId = BitConverter.ToInt16(MRewardData, MainRewardBase + 2);
+                        List.Item.TryGetValue(MainRewardId, out string MainRewardItemName);
+                        ((TextBox)this.Controls.Find("R10" + i.ToString(), true)[0]).Text = MainRewardItemName;
                     }
 
-                    if (!((HaveAobj == 0)) & !(ARewardOffset == 0000))
+                    if (!((ARewardPointer == 0)))
                     {
-                        for (int k = 0; k < 8; k++)
+                        for (int i = 10; i < 30; i++)
                         {
-                            int ARewardChance = ARewardText[k * 6];
+                            int ARewardBase = (i - 10) * 6;
+
+                            int ARewardChance = ARewardData[ARewardBase];
                             if (ARewardChance == 255)
                             {
                                 break;
                             }
-                                //Load chance
-                                ((NumericUpDown)this.Controls.Find("numericUpDown31" + k.ToString(), true)[0]).Value = ARewardChance;
+                            ((NumericUpDown)this.Controls.Find("R15" + i.ToString(), true)[0]).Value = ARewardChance;
 
-                            //Load amount
-                            int ARewardAmount = ARewardText[k * 6 + 4];
-                            ((NumericUpDown)this.Controls.Find("numericUpDown30" + k.ToString(), true)[0]).Value = ARewardAmount;
+                            ((NumericUpDown)this.Controls.Find("R14" + i.ToString(), true)[0]).Value = ARewardData[ARewardBase + 4];
 
-                            //Load id
-                            int BRewardId = Convert.ToInt32(ARewardText[k * 6 + 3].ToString("X2") + ARewardText[k * 6 + 2].ToString("X2"), 16);
-                            List.Item.TryGetValue(BRewardId, out string ARewardName);
-                            ((TextBox)this.Controls.Find("textBox30" + k.ToString(), true)[0]).Text = ARewardName;
-
+                            int ARewardId = BitConverter.ToInt16(ARewardData, ARewardBase + 2);
+                            List.Item.TryGetValue(ARewardId, out string ARewardItemName);
+                            ((TextBox)this.Controls.Find("R13" + i.ToString(), true)[0]).Text = ARewardItemName;
                         }
                     }
 
-                    if (!(HaveBobj == 0))
+                    if (!(BRewardPointer == 0))
                     {
-                        for (int f = 0; f < 8; f++)
+                        for (int i = 10; i < 30; i++)
                         {
-                            int BRewardChance = BRewardText[f * 6];
+                            int BRewardBase = (i - 10) * 6;
+
+                            int BRewardChance = BRewardData[BRewardBase];
                             if (BRewardChance == 255)
                             {
                                 break;
                             }
-                                //Load chance
-                                ((NumericUpDown)this.Controls.Find("numericUpDown41" + f.ToString(), true)[0]).Value = BRewardChance;
+                            ((NumericUpDown)this.Controls.Find("R18" + i.ToString(), true)[0]).Value = BRewardChance;
 
-                            //Load amount
-                            int BRewardAmount = BRewardText[f * 6 + 4];
-                            ((NumericUpDown)this.Controls.Find("numericUpDown40" + f.ToString(), true)[0]).Value = BRewardAmount;
+                            ((NumericUpDown)this.Controls.Find("R17" + i.ToString(), true)[0]).Value = BRewardData[BRewardBase + 4];
 
-                            //Load id
-                            int BRewardId = Convert.ToInt32(BRewardText[f * 6 + 3].ToString("X2") + BRewardText[f * 6 + 2].ToString("X2"), 16);
-                            List.Item.TryGetValue(BRewardId, out string BRewardName);
-                            ((TextBox)this.Controls.Find("textBox40" + f.ToString(), true)[0]).Text = BRewardName;
+                            int BRewardId = BitConverter.ToInt16(BRewardData, BRewardBase + 2);
+                            List.Item.TryGetValue(BRewardId, out string BRewardItemName);
+                            ((TextBox)this.Controls.Find("R16" + i.ToString(), true)[0]).Text = BRewardItemName;
+                        }
+                    }
 
+                    if (!(An1RewardPointer == 0))
+                    {
+                        for (int i = 10; i < 20; i++)
+                        {
+                            int An1RewardBase = (i - 10) * 6;
+
+                            int An1RewardChance = An1RewardData[An1RewardBase];
+                            if (An1RewardChance == 255)
+                            {
+                                break;
+                            }
+                            ((NumericUpDown)this.Controls.Find("R21" + i.ToString(), true)[0]).Value = An1RewardChance;
+
+                            ((NumericUpDown)this.Controls.Find("R19" + i.ToString(), true)[0]).Value = An1RewardData[An1RewardBase + 4];
+
+                            int BRewardId = BitConverter.ToInt16(An1RewardData, An1RewardBase + 2);
+                            List.Item.TryGetValue(BRewardId, out string An1RewardItemName);
+                            ((TextBox)this.Controls.Find("R20" + i.ToString(), true)[0]).Text = An1RewardItemName;
                         }
                     }
 
                     //Load large monster
-                    string MainMonsID = ba[BitConverter.ToInt32(ba, 24) + 64].ToString("X2");
-                    List.Monster.TryGetValue(MainMonsID, out string MainMonsStr);
+                    int MainMonsID = BitConverter.ToInt16(ba, (BitConverter.ToInt16(ba, 24) + 32));
+                    List.Monster1.TryGetValue(MainMonsID, out string MainMonsStr);
                     comboBox11.Text = MainMonsStr;
 
                     numericUpDown9.Value = BitConverter.ToInt16(ba, 72);    //str
@@ -337,6 +316,23 @@ namespace mhfz_quest_editor
                         radioButton1.Checked = false;
                         radioButton2.Checked = true;
                     }
+
+                    //Load clear condition
+                    if (ba[264] == 2)
+                    {
+                        comboBox3.SelectedIndex = 0;
+                    }
+                    else if (ba[264] == 3)
+                    {
+                        comboBox3.SelectedIndex = 1;
+                    }
+                    else
+                    {
+                        comboBox3.SelectedIndex = 2;
+                    }
+
+                    //chekc annother target
+                    numericUpDown16.Value = BitConverter.ToInt32(ba, 132);
 
 
                     radioButton3.Checked = true;    //load suc
@@ -439,284 +435,135 @@ namespace mhfz_quest_editor
             string IfA = ba[248].ToString("X2") + ba[249].ToString("X2") + ba[250].ToString("X2") + ba[251].ToString("X2");
             string IfB = ba[256].ToString("X2") + ba[257].ToString("X2") + ba[258].ToString("X2") + ba[259].ToString("X2");
 
-            int kariL = EntireBytes.Count;
-            byte[] NewRwdHeader = BitConverter.GetBytes(kariL);
-            EntireBytes[12] = NewRwdHeader[0];
-            EntireBytes[13] = NewRwdHeader[1];
+            int HaveA = comboBox9.SelectedIndex;
+            int HaveB = comboBox10.SelectedIndex;
 
-            if (!(IfB == "00000000"))
+            byte[] NewRewardHeader = BitConverter.GetBytes(EntireBytes.Count);      //get entire length and convert to byte[]
+            EntireBytes[12] = NewRewardHeader[0];
+            EntireBytes[13] = NewRewardHeader[1];
+
+            if (!(HaveB == 0))
             {
-                //Main A B
-                List<byte> oMAB = new List<byte>
+                List<byte> HeaderMainAB = new List<byte>
+                {01, 128, 00, 00, 255, 255, 00, 00, 02, 128, 00, 00, 255, 255, 00, 00, 03, 128, 00, 00, 255, 255, 00, 00, 255, 255, 00, 00, 00, 00, 00, 00};
+                EntireBytes.AddRange(HeaderMainAB);
+                int TempLength = EntireBytes.Count;
+                int NewRewardHeader1 = EntireBytes.Count - 32;
+
+                EntireBytes[NewRewardHeader1 + 4] = BitConverter.GetBytes(EntireBytes.Count)[0];    //replace with new main header
+                EntireBytes[NewRewardHeader1 + 5] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                List<byte> NewMainRewardData = new List<byte> { };
+                for (int i = 10; i < 50; i++)
                 {
-                    01, 128, 00, 00, 255, 255, 00, 00, 02, 128, 00, 00, 255, 255, 00, 00, 03, 128, 00, 00, 255, 255, 00, 00, 255, 255, 00, 00, 00, 00, 00, 00
-                };
-                EntireBytes.AddRange(oMAB);                        //add header and offset
-                kariL = EntireBytes.Count;
-                byte[] MABoffset = BitConverter.GetBytes(kariL);
-                byte[] MABoffset2 = BitConverter.GetBytes(kariL + 52);
-                byte[] MABoffset3 = BitConverter.GetBytes(kariL + 104);
-
-                EntireBytes[kariL - 27] = MABoffset[1];     //replace new header
-                EntireBytes[kariL - 28] = MABoffset[0];     //replace new header
-
-                List<byte> MainReward = new List<byte> { };       //create new list
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown200.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox220.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown210.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown201.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox221.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown211.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown202.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox222.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown212.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown203.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox223.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown213.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown204.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox224.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown214.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown205.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox225.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown215.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown206.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox226.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown216.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown207.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox227.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown217.Value)));
-                MainReward.AddRange(Endofline);
-                EntireBytes.AddRange(MainReward);
-
-                //A
-                EntireBytes[kariL - 19] = MABoffset2[1];     //replace new header
-                EntireBytes[kariL - 20] = MABoffset2[0];     //replace new header
-
-                List<byte> MainReward2 = new List<byte> { };       //create new list
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown310.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox300.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown300.Value)));
-
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown311.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox301.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown301.Value)));
-
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown312.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox302.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown302.Value)));
-
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown313.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox303.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown303.Value)));
-
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown314.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox304.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown304.Value)));
-
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown315.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox305.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown305.Value)));
-
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown316.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox306.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown306.Value)));
-
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown317.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox307.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown307.Value)));
-                MainReward2.AddRange(Endofline);
-                EntireBytes.AddRange(MainReward2);
-
-                //B
-                EntireBytes[kariL - 11] = MABoffset3[1];     //replace new header
-                EntireBytes[kariL - 12] = MABoffset3[0];     //replace new header
-
-                List<byte> MainReward3 = new List<byte> { };       //create new list
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown410.Value)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox400.Text).Key)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown400.Value)));
-
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown411.Value)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox401.Text).Key)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown401.Value)));
-
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown412.Value)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox402.Text).Key)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown402.Value)));
-
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown413.Value)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox403.Text).Key)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown403.Value)));
-
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown414.Value)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox404.Text).Key)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown404.Value)));
-
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown415.Value)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox405.Text).Key)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown405.Value)));
-
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown416.Value)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox406.Text).Key)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown406.Value)));
-
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown417.Value)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox407.Text).Key)));
-                MainReward3.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown407.Value)));
-                MainReward3.AddRange(Endofline);
-                EntireBytes.AddRange(MainReward3);
+                    byte[] MChance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R12" + i.ToString(), true)[0]).Value));
+                    NewMainRewardData.AddRange(MChance);
+                    //if(MChance[0] == 0) { break; }
+                    string NewMainRewardName = ((TextBox)this.Controls.Find("R10" + i.ToString(), true)[0]).Text;
+                    NewMainRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewMainRewardName).Key)));
+                    NewMainRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R11" + i.ToString(), true)[0]).Value)));
+                }
+                NewMainRewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewMainRewardData);
 
 
+                EntireBytes[NewRewardHeader1 + 12] = BitConverter.GetBytes(EntireBytes.Count)[0];    //replace with new a header
+                EntireBytes[NewRewardHeader1 + 13] = BitConverter.GetBytes(EntireBytes.Count)[1];
+
+                List<byte> NewARewardData = new List<byte> { };
+                for (int i = 10; i < 30; i++)
+                {
+                    byte[] AChance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R15" + i.ToString(), true)[0]).Value));
+                    NewARewardData.AddRange(AChance);
+                    //if (AChance[0] == 0) { break; }
+                    string NewARewardName = ((TextBox)this.Controls.Find("R13" + i.ToString(), true)[0]).Text;
+                    NewARewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewARewardName).Key)));
+                    NewARewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R14" + i.ToString(), true)[0]).Value)));
+                }
+                NewARewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewARewardData);
+
+
+                EntireBytes[NewRewardHeader1 + 20] = BitConverter.GetBytes(EntireBytes.Count)[0];    //replace with new B header
+                EntireBytes[NewRewardHeader1 + 21] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                List<byte> NewBRewardData = new List<byte> { };
+                for (int i = 10; i < 30; i++)
+                {
+                    byte[] BChance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R18" + i.ToString(), true)[0]).Value));
+                    NewBRewardData.AddRange(BChance);
+                    //if (BChance[0] == 0) { break; }
+                    string NewBRewardName = ((TextBox)this.Controls.Find("R16" + i.ToString(), true)[0]).Text;
+                    NewBRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewBRewardName).Key)));
+                    NewBRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R17" + i.ToString(), true)[0]).Value)));
+                }
+                NewBRewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewBRewardData);
             }
-            else if (!(IfA == "00000000"))
+            else if (!(HaveA == 0))
             {
-                //Main A
-                List<byte> oMA = new List<byte>
+                List<byte> HeaderMainA = new List<byte>
+                {01, 128, 00, 00, 255, 255, 00, 00, 02, 128, 00, 00, 255, 255, 00, 00, 255, 255, 00, 00, 00, 00, 00, 00};
+                EntireBytes.AddRange(HeaderMainA);
+                int TempLength = EntireBytes.Count;
+                int NewRewardHeader1 = EntireBytes.Count - 24;
+
+                EntireBytes[NewRewardHeader1 + 4] = BitConverter.GetBytes(EntireBytes.Count)[0];    //replace with new main header
+                EntireBytes[NewRewardHeader1 + 5] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                List<byte> NewMainRewardData = new List<byte> { };
+                for (int i = 10; i < 50; i++)
                 {
-                    01, 128, 00, 00, 255, 255, 00, 00, 02, 128, 00, 00, 255, 255, 00, 00, 255, 255, 00, 00, 00, 00, 00, 00
-                };
-                EntireBytes.AddRange(oMA);                        //add header and offset
-                kariL = EntireBytes.Count;
-                byte[] MABoffset = BitConverter.GetBytes(kariL);
-                byte[] MABoffset2 = BitConverter.GetBytes(kariL + 52);
-                byte[] MABoffset3 = BitConverter.GetBytes(kariL + 104);
+                    byte[] MChance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R12" + i.ToString(), true)[0]).Value));
+                    NewMainRewardData.AddRange(MChance);
+                    //if(MChance[0] == 0) { break; }
+                    string NewMainRewardName = ((TextBox)this.Controls.Find("R10" + i.ToString(), true)[0]).Text;
+                    NewMainRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewMainRewardName).Key)));
+                    NewMainRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R11" + i.ToString(), true)[0]).Value)));
+                }
+                NewMainRewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewMainRewardData);
 
-                EntireBytes[kariL - 19] = MABoffset[1];     //replace new header
-                EntireBytes[kariL - 20] = MABoffset[0];     //replace new header
+                EntireBytes[NewRewardHeader1 + 12] = BitConverter.GetBytes(EntireBytes.Count)[0];    //replace with new a header
+                EntireBytes[NewRewardHeader1 + 13] = BitConverter.GetBytes(EntireBytes.Count)[1];
 
-                List<byte> MainReward = new List<byte> { };       //create new list
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown200.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox220.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown210.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown201.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox221.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown211.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown202.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox222.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown212.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown203.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox223.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown213.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown204.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox224.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown214.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown205.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox225.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown215.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown206.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox226.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown216.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown207.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox227.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown217.Value)));
-                MainReward.AddRange(Endofline);
-                EntireBytes.AddRange(MainReward);
-
-                //A
-                EntireBytes[kariL - 11] = MABoffset2[1];     //replace new header
-                EntireBytes[kariL - 12] = MABoffset2[0];     //replace new header
-
-                List<byte> MainReward2 = new List<byte> { };       //create new list
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown310.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox300.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown300.Value)));
-
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown311.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox301.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown301.Value)));
-
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown312.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox302.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown302.Value)));
-
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown313.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox303.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown303.Value)));
-
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown314.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox304.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown304.Value)));
-
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown315.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox305.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown305.Value)));
-
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown316.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox306.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown306.Value)));
-
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown317.Value)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox307.Text).Key)));
-                MainReward2.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown307.Value)));
-                MainReward2.AddRange(Endofline);
-                EntireBytes.AddRange(MainReward2);
+                List<byte> NewARewardData = new List<byte> { };
+                for (int i = 10; i < 30; i++)
+                {
+                    byte[] AChance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R15" + i.ToString(), true)[0]).Value));
+                    NewARewardData.AddRange(AChance);
+                    //if (AChance[0] == 0) { break; }
+                    string NewARewardName = ((TextBox)this.Controls.Find("R13" + i.ToString(), true)[0]).Text;
+                    NewARewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewARewardName).Key)));
+                    NewARewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R14" + i.ToString(), true)[0]).Value)));
+                }
+                NewARewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewARewardData);
             }
             else
             {
-                //Main
-                List<byte> oM = new List<byte>
+                List<byte> HeaderMain = new List<byte>
+                {01, 128, 00, 00, 255, 255, 00, 00, 255, 255, 00, 00, 00, 00, 00, 00};
+                EntireBytes.AddRange(HeaderMain);
+                int TempLength = EntireBytes.Count;
+                int NewRewardHeader1 = EntireBytes.Count - 16;
+
+                EntireBytes[NewRewardHeader1 + 4] = BitConverter.GetBytes(EntireBytes.Count)[0];    //replace with new main header
+                EntireBytes[NewRewardHeader1 + 5] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                List<byte> NewMainRewardData = new List<byte> { };
+                for (int i = 10; i < 50; i++)
                 {
-                    01, 128, 00, 00, 255, 255, 00, 00, 255, 255, 00, 00, 00, 00, 00, 00
-                };
-                EntireBytes.AddRange(oM);                        //add header and offset
-                kariL = EntireBytes.Count;
-                byte[] MABoffset = BitConverter.GetBytes(kariL);
-                byte[] MABoffset2 = BitConverter.GetBytes(kariL + 52);
-                byte[] MABoffset3 = BitConverter.GetBytes(kariL + 104);
-
-                EntireBytes[kariL - 11] = MABoffset[1];     //replace new header
-                EntireBytes[kariL - 12] = MABoffset[0];     //replace new header
-
-                List<byte> MainReward = new List<byte> { };       //create new list
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown200.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox220.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown210.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown201.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox221.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown211.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown202.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox222.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown212.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown203.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox223.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown213.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown204.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox224.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown214.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown205.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox225.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown215.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown206.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox226.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown216.Value)));
-
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown207.Value)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == textBox227.Text).Key)));
-                MainReward.AddRange(BitConverter.GetBytes(decimal.ToInt16(numericUpDown217.Value)));
-                MainReward.AddRange(Endofline);
-                EntireBytes.AddRange(MainReward);
-
+                    byte[] MChance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R12" + i.ToString(), true)[0]).Value));
+                    NewMainRewardData.AddRange(MChance);
+                    //if(MChance[0] == 0) { break; }
+                    string NewMainRewardName = ((TextBox)this.Controls.Find("R10" + i.ToString(), true)[0]).Text;
+                    NewMainRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewMainRewardName).Key)));
+                    NewMainRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R11" + i.ToString(), true)[0]).Value)));
+                }
+                NewMainRewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewMainRewardData);
             }
+
+
+
+
 
             //Supply
 
@@ -936,7 +783,6 @@ namespace mhfz_quest_editor
             //Monster
             int MainMonstPointer = BitConverter.ToInt32(ba, 24);
             string MonsID1 = List.Monster.FirstOrDefault(x => x.Value == comboBox11.Text).Key;
-            int num_var = Convert.ToInt32(MonsID1);
             eb2[MainMonstPointer + 32] = Convert.ToByte(MonsID1, 16);
             eb2[MainMonstPointer + 64] = Convert.ToByte(MonsID1, 16);
 
@@ -951,7 +797,7 @@ namespace mhfz_quest_editor
             {
                 eb2[337] = 0;
             }
-            eb2[92] = Convert.ToByte(List.Rank.FirstOrDefault(x => x.Value == comboBox4.Text).Key);     //Is g
+            eb2[92] = Convert.ToByte(List.Rank.FirstOrDefault(x => x.Value == comboBox4.Text).Key);     //carve rank
 
             eb2[97] = BitConverter.GetBytes(decimal.ToInt16(numericUpDown12.Value))[0];     //small
 
@@ -969,18 +815,30 @@ namespace mhfz_quest_editor
             eb2[89] = HRP3[1];
             eb2[90] = HRP3[2];
 
+            //Clear condition
+            if (comboBox3.SelectedIndex == 0)
+            {
+                eb2[264] = 2;
+            }
+            else if (comboBox3.SelectedIndex == 1)
+            {
+                eb2[264] = 3;
+            }
+            else
+            {
+                eb2[264] = 4;
+            }
 
-            File.WriteAllBytes(path, eb2.ToArray());
-        }
+            //Another target
+            if (!(numericUpDown16.Value == 0))
+            {
+                eb2[128] = 4;
+                eb2[130] = Convert.ToByte(MonsID1, 16);
+                eb2[132] = BitConverter.GetBytes(decimal.ToInt16(numericUpDown16.Value))[0];
+            }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(comboBox6.Text);
-        }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(comboBox7.Text);
+                File.WriteAllBytes(path, eb2.ToArray());
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -991,6 +849,36 @@ namespace mhfz_quest_editor
         private void button6_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(comboBox2.Text);
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1006_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown92_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown68_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown20_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
