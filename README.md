@@ -46,6 +46,8 @@ Replace original quest file with yours.
 If you want to add it as new quest you should edit event quest list file.
 
 # Known Issues
+unable to add another target objective reward
+
 
 
 # Q&A
