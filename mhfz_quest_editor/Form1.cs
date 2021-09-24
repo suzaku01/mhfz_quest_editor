@@ -447,22 +447,18 @@ namespace mhfz_quest_editor
                      255, 255, 00, 00
             };
 
-            string IfA = ba[248].ToString("X2") + ba[249].ToString("X2") + ba[250].ToString("X2") + ba[251].ToString("X2");
-            string IfB = ba[256].ToString("X2") + ba[257].ToString("X2") + ba[258].ToString("X2") + ba[259].ToString("X2");
-
             int HaveA = comboBox9.SelectedIndex;
             int HaveB = comboBox10.SelectedIndex;
-
+            decimal HaveAnt = numericUpDown16.Value;
             byte[] NewRewardHeader = BitConverter.GetBytes(EntireBytes.Count);      //get entire length and convert to byte[]
             EntireBytes[12] = NewRewardHeader[0];
             EntireBytes[13] = NewRewardHeader[1];
 
-            if (!(HaveB == 0))
+            if ((!(HaveB == 0)) & (HaveAnt == 0))       //Main A B
             {
                 List<byte> HeaderMainAB = new List<byte>
                 {01, 128, 00, 00, 255, 255, 00, 00, 02, 128, 00, 00, 255, 255, 00, 00, 03, 128, 00, 00, 255, 255, 00, 00, 255, 255, 00, 00, 00, 00, 00, 00};
                 EntireBytes.AddRange(HeaderMainAB);
-                int TempLength = EntireBytes.Count;
                 int NewRewardHeader1 = EntireBytes.Count - 32;
 
                 EntireBytes[NewRewardHeader1 + 4] = BitConverter.GetBytes(EntireBytes.Count)[0];    //replace with new main header
@@ -513,12 +509,11 @@ namespace mhfz_quest_editor
                 NewBRewardData.AddRange(Endofline);
                 EntireBytes.AddRange(NewBRewardData);
             }
-            else if (!(HaveA == 0))
+            else if ((!(HaveA == 0)) & (HaveAnt == 0))  //Main A
             {
                 List<byte> HeaderMainA = new List<byte>
                 {01, 128, 00, 00, 255, 255, 00, 00, 02, 128, 00, 00, 255, 255, 00, 00, 255, 255, 00, 00, 00, 00, 00, 00};
                 EntireBytes.AddRange(HeaderMainA);
-                int TempLength = EntireBytes.Count;
                 int NewRewardHeader1 = EntireBytes.Count - 24;
 
                 EntireBytes[NewRewardHeader1 + 4] = BitConverter.GetBytes(EntireBytes.Count)[0];    //replace with new main header
@@ -552,12 +547,11 @@ namespace mhfz_quest_editor
                 NewARewardData.AddRange(Endofline);
                 EntireBytes.AddRange(NewARewardData);
             }
-            else
+            else if (HaveAnt == 0)      //Main
             {
                 List<byte> HeaderMain = new List<byte>
                 {01, 128, 00, 00, 255, 255, 00, 00, 255, 255, 00, 00, 00, 00, 00, 00};
                 EntireBytes.AddRange(HeaderMain);
-                int TempLength = EntireBytes.Count;
                 int NewRewardHeader1 = EntireBytes.Count - 16;
 
                 EntireBytes[NewRewardHeader1 + 4] = BitConverter.GetBytes(EntireBytes.Count)[0];    //replace with new main header
@@ -575,10 +569,175 @@ namespace mhfz_quest_editor
                 NewMainRewardData.AddRange(Endofline);
                 EntireBytes.AddRange(NewMainRewardData);
             }
+            else if ((!(HaveB == 0)) & (!(HaveAnt == 0)))       //Main A B Ant
+            {
+                List<byte> HeaderMainABAnt = new List<byte>
+                {01,128,00,00,255,255,00,00,02,128,00,00,255,255,00,00,03,128,00,00,255,255,00,00,04,128,00,00,255,255,00,00,05,128,00,00,255,255,00,00,255,255,00,00,00,00,00,00};
+                EntireBytes.AddRange(HeaderMainABAnt);
+                int NewRewardHeader1 = EntireBytes.Count - 48;
+
+                EntireBytes[NewRewardHeader1 + 28] = BitConverter.GetBytes(EntireBytes.Count)[0];    //Ant1
+                EntireBytes[NewRewardHeader1 + 29] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                List<byte> NewAnt1RewardData = new List<byte> { };
+                for (int i = 10; i < 20; i++)
+                {
+                    byte[] Ant1Chance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R21" + i.ToString(), true)[0]).Value));
+                    NewAnt1RewardData.AddRange(Ant1Chance);
+                    string NewAnt1RewardName = ((TextBox)this.Controls.Find("R20" + i.ToString(), true)[0]).Text;
+                    NewAnt1RewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewAnt1RewardName).Key)));
+                    NewAnt1RewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R19" + i.ToString(), true)[0]).Value)));
+                }
+                NewAnt1RewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewAnt1RewardData);
+
+                EntireBytes[NewRewardHeader1 + 36] = BitConverter.GetBytes(EntireBytes.Count)[0];    //Ant2
+                EntireBytes[NewRewardHeader1 + 37] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                EntireBytes.AddRange(NewAnt1RewardData);
+
+                EntireBytes[NewRewardHeader1 + 4] = BitConverter.GetBytes(EntireBytes.Count)[0];    //Main
+                EntireBytes[NewRewardHeader1 + 5] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                List<byte> NewMainRewardData = new List<byte> { };
+                for (int i = 10; i < 50; i++)
+                {
+                    byte[] MChance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R12" + i.ToString(), true)[0]).Value));
+                    NewMainRewardData.AddRange(MChance);
+                    //if(MChance[0] == 0) { break; }
+                    string NewMainRewardName = ((TextBox)this.Controls.Find("R10" + i.ToString(), true)[0]).Text;
+                    NewMainRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewMainRewardName).Key)));
+                    NewMainRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R11" + i.ToString(), true)[0]).Value)));
+                }
+                NewMainRewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewMainRewardData);
 
 
+                EntireBytes[NewRewardHeader1 + 12] = BitConverter.GetBytes(EntireBytes.Count)[0];    //replace with new a header
+                EntireBytes[NewRewardHeader1 + 13] = BitConverter.GetBytes(EntireBytes.Count)[1];
+
+                List<byte> NewARewardData = new List<byte> { };
+                for (int i = 10; i < 30; i++)
+                {
+                    byte[] AChance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R15" + i.ToString(), true)[0]).Value));
+                    NewARewardData.AddRange(AChance);
+                    //if (AChance[0] == 0) { break; }
+                    string NewARewardName = ((TextBox)this.Controls.Find("R13" + i.ToString(), true)[0]).Text;
+                    NewARewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewARewardName).Key)));
+                    NewARewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R14" + i.ToString(), true)[0]).Value)));
+                }
+                NewARewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewARewardData);
 
 
+                EntireBytes[NewRewardHeader1 + 20] = BitConverter.GetBytes(EntireBytes.Count)[0];    //replace with new B header
+                EntireBytes[NewRewardHeader1 + 21] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                List<byte> NewBRewardData = new List<byte> { };
+                for (int i = 10; i < 30; i++)
+                {
+                    byte[] BChance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R18" + i.ToString(), true)[0]).Value));
+                    NewBRewardData.AddRange(BChance);
+                    //if (BChance[0] == 0) { break; }
+                    string NewBRewardName = ((TextBox)this.Controls.Find("R16" + i.ToString(), true)[0]).Text;
+                    NewBRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewBRewardName).Key)));
+                    NewBRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R17" + i.ToString(), true)[0]).Value)));
+                }
+                NewBRewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewBRewardData);
+            }
+            else if ((!(HaveA == 0)) & (!(HaveAnt == 0)))       //Main A Ant
+            {
+                List<byte> HeaderMainAAnt = new List<byte>
+                {01,128,00,00,255,255,00,00,02,128,00,00,255,255,00,00,04,128,00,00,255,255,00,00,05,128,00,00,255,255,00,00,255,255,00,00,00,00,00,00};
+                EntireBytes.AddRange(HeaderMainAAnt);
+                int NewRewardHeader1 = EntireBytes.Count - 40;
+
+                EntireBytes[NewRewardHeader1 + 20] = BitConverter.GetBytes(EntireBytes.Count)[0];    //Ant1
+                EntireBytes[NewRewardHeader1 + 21] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                List<byte> NewAnt2RewardData = new List<byte> { };
+                for (int i = 10; i < 20; i++)
+                {
+                    byte[] Ant2Chance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R21" + i.ToString(), true)[0]).Value));
+                    NewAnt2RewardData.AddRange(Ant2Chance);
+                    string NewAnt1RewardName = ((TextBox)this.Controls.Find("R20" + i.ToString(), true)[0]).Text;
+                    NewAnt2RewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewAnt1RewardName).Key)));
+                    NewAnt2RewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R19" + i.ToString(), true)[0]).Value)));
+                }
+                NewAnt2RewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewAnt2RewardData);
+
+                EntireBytes[NewRewardHeader1 + 28] = BitConverter.GetBytes(EntireBytes.Count)[0];    //Ant2
+                EntireBytes[NewRewardHeader1 + 29] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                EntireBytes.AddRange(NewAnt2RewardData);
+
+                EntireBytes[NewRewardHeader1 + 4] = BitConverter.GetBytes(EntireBytes.Count)[0];    //Main
+                EntireBytes[NewRewardHeader1 + 5] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                List<byte> NewMainRewardData = new List<byte> { };
+                for (int i = 10; i < 50; i++)
+                {
+                    byte[] MChance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R12" + i.ToString(), true)[0]).Value));
+                    NewMainRewardData.AddRange(MChance);
+                    //if(MChance[0] == 0) { break; }
+                    string NewMainRewardName = ((TextBox)this.Controls.Find("R10" + i.ToString(), true)[0]).Text;
+                    NewMainRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewMainRewardName).Key)));
+                    NewMainRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R11" + i.ToString(), true)[0]).Value)));
+                }
+                NewMainRewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewMainRewardData);
+
+
+                EntireBytes[NewRewardHeader1 + 12] = BitConverter.GetBytes(EntireBytes.Count)[0];    //A
+                EntireBytes[NewRewardHeader1 + 13] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                List<byte> NewARewardData = new List<byte> { };
+                for (int i = 10; i < 30; i++)
+                {
+                    byte[] AChance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R15" + i.ToString(), true)[0]).Value));
+                    NewARewardData.AddRange(AChance);
+                    //if (AChance[0] == 0) { break; }
+                    string NewARewardName = ((TextBox)this.Controls.Find("R13" + i.ToString(), true)[0]).Text;
+                    NewARewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewARewardName).Key)));
+                    NewARewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R14" + i.ToString(), true)[0]).Value)));
+                }
+                NewARewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewARewardData);
+            }
+            else if (!(HaveAnt == 0))       //Main Ant
+            {
+                List<byte> HeaderMainAnt = new List<byte>
+                {01,128,00,00,255,255,00,00,04,128,00,00,255,255,00,00,05,128,00,00,255,255,00,00,255,255,00,00,00,00,00,00};
+                EntireBytes.AddRange(HeaderMainAnt);
+                int NewRewardHeader1 = EntireBytes.Count - 32;
+
+                EntireBytes[NewRewardHeader1 + 12] = BitConverter.GetBytes(EntireBytes.Count)[0];    //Ant1
+                EntireBytes[NewRewardHeader1 + 13] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                List<byte> NewAnt3RewardData = new List<byte> { };
+                for (int i = 10; i < 20; i++)
+                {
+                    byte[] Ant3Chance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R21" + i.ToString(), true)[0]).Value));
+                    NewAnt3RewardData.AddRange(Ant3Chance);
+                    string NewAnt1RewardName = ((TextBox)this.Controls.Find("R20" + i.ToString(), true)[0]).Text;
+                    NewAnt3RewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewAnt1RewardName).Key)));
+                    NewAnt3RewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R19" + i.ToString(), true)[0]).Value)));
+                }
+                NewAnt3RewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewAnt3RewardData);
+
+                EntireBytes[NewRewardHeader1 + 20] = BitConverter.GetBytes(EntireBytes.Count)[0];    //Ant2
+                EntireBytes[NewRewardHeader1 + 21] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                EntireBytes.AddRange(NewAnt3RewardData);
+
+                EntireBytes[NewRewardHeader1 + 4] = BitConverter.GetBytes(EntireBytes.Count)[0];    //Main
+                EntireBytes[NewRewardHeader1 + 5] = BitConverter.GetBytes(EntireBytes.Count)[1];
+                List<byte> NewMainRewardData = new List<byte> { };
+                for (int i = 10; i < 50; i++)
+                {
+                    byte[] MChance = BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R12" + i.ToString(), true)[0]).Value));
+                    NewMainRewardData.AddRange(MChance);
+                    //if(MChance[0] == 0) { break; }
+                    string NewMainRewardName = ((TextBox)this.Controls.Find("R10" + i.ToString(), true)[0]).Text;
+                    NewMainRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(List.Item.FirstOrDefault(x => x.Value == NewMainRewardName).Key)));
+                    NewMainRewardData.AddRange(BitConverter.GetBytes(decimal.ToInt16(((NumericUpDown)this.Controls.Find("R11" + i.ToString(), true)[0]).Value)));
+                }
+                NewMainRewardData.AddRange(Endofline);
+                EntireBytes.AddRange(NewMainRewardData);
+            }
 
             //Supply
 
