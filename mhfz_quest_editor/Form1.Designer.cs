@@ -5273,11 +5273,6 @@ namespace mhfz_quest_editor
             // 
             // numericUpDown16
             // 
-            this.numericUpDown16.Increment = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
             this.numericUpDown16.Location = new System.Drawing.Point(683, 68);
             this.numericUpDown16.Maximum = new decimal(new int[] {
             10,
