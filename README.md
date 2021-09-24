@@ -48,3 +48,13 @@ If you want to add it as new quest you should edit event quest list file.
 # Known Issues
 
 # Q&A
+## Why I can't change map?  
+Map info in quest file is vry complicated, thus not implemented.  
+  
+## What is monster strength?  
+This is the number that determines the strength of the monster(Attack multiplier, Defence multiplier, HP).  
+You can find it on http://ferias.life.coocan.jp  
+  
+  
+
+
