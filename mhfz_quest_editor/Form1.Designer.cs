@@ -448,9 +448,7 @@ namespace mhfz_quest_editor
             this.label64 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.label51 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label50 = new System.Windows.Forms.Label();
             this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
             this.label49 = new System.Windows.Forms.Label();
@@ -468,6 +466,12 @@ namespace mhfz_quest_editor
             this.label60 = new System.Windows.Forms.Label();
             this.label61 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.numericUpDown18 = new System.Windows.Forms.NumericUpDown();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.numericUpDown17 = new System.Windows.Forms.NumericUpDown();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.numericUpDown16 = new System.Windows.Forms.NumericUpDown();
             this.label29 = new System.Windows.Forms.Label();
             this.textBox19 = new System.Windows.Forms.TextBox();
@@ -516,6 +520,7 @@ namespace mhfz_quest_editor
             this.label19 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.tabPage9.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -747,6 +752,8 @@ namespace mhfz_quest_editor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).BeginInit();
@@ -4957,9 +4964,8 @@ namespace mhfz_quest_editor
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
-            this.tabPage2.Controls.Add(this.radioButton2);
+            this.tabPage2.Controls.Add(this.comboBox7);
             this.tabPage2.Controls.Add(this.label51);
-            this.tabPage2.Controls.Add(this.radioButton1);
             this.tabPage2.Controls.Add(this.label50);
             this.tabPage2.Controls.Add(this.numericUpDown12);
             this.tabPage2.Controls.Add(this.label49);
@@ -4984,38 +4990,16 @@ namespace mhfz_quest_editor
             this.tabPage2.Text = "Monster";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(317, 223);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(41, 19);
-            this.radioButton2.TabIndex = 124;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "No";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
             // label51
             // 
             this.label51.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label51.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label51.Location = new System.Drawing.Point(175, 219);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(77, 23);
+            this.label51.Size = new System.Drawing.Size(87, 23);
             this.label51.TabIndex = 123;
-            this.label51.Text = "G behavior";
+            this.label51.Text = "Species";
             this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(269, 223);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(42, 19);
-            this.radioButton1.TabIndex = 122;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Yes";
-            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // label50
             // 
@@ -5023,7 +5007,7 @@ namespace mhfz_quest_editor
             this.label50.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label50.Location = new System.Drawing.Point(175, 74);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(77, 23);
+            this.label50.Size = new System.Drawing.Size(87, 23);
             this.label50.TabIndex = 120;
             this.label50.Text = "Monster";
             this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -5072,14 +5056,14 @@ namespace mhfz_quest_editor
             "Training",
             "G",
             "Zenith"});
-            this.comboBox4.Location = new System.Drawing.Point(258, 190);
+            this.comboBox4.Location = new System.Drawing.Point(268, 190);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(120, 23);
             this.comboBox4.TabIndex = 115;
             // 
             // numericUpDown11
             // 
-            this.numericUpDown11.Location = new System.Drawing.Point(258, 161);
+            this.numericUpDown11.Location = new System.Drawing.Point(268, 161);
             this.numericUpDown11.Maximum = new decimal(new int[] {
             4,
             0,
@@ -5100,7 +5084,7 @@ namespace mhfz_quest_editor
             this.label48.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label48.Location = new System.Drawing.Point(175, 161);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(77, 23);
+            this.label48.Size = new System.Drawing.Size(87, 23);
             this.label48.TabIndex = 113;
             this.label48.Text = "Size Range";
             this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -5118,7 +5102,7 @@ namespace mhfz_quest_editor
             // 
             // numericUpDown10
             // 
-            this.numericUpDown10.Location = new System.Drawing.Point(258, 132);
+            this.numericUpDown10.Location = new System.Drawing.Point(268, 132);
             this.numericUpDown10.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -5140,7 +5124,7 @@ namespace mhfz_quest_editor
             // 
             // numericUpDown9
             // 
-            this.numericUpDown9.Location = new System.Drawing.Point(258, 103);
+            this.numericUpDown9.Location = new System.Drawing.Point(268, 103);
             this.numericUpDown9.Maximum = new decimal(new int[] {
             73,
             0,
@@ -5156,7 +5140,7 @@ namespace mhfz_quest_editor
             this.label46.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label46.Location = new System.Drawing.Point(175, 190);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(77, 23);
+            this.label46.Size = new System.Drawing.Size(87, 23);
             this.label46.TabIndex = 62;
             this.label46.Text = "Carve rank";
             this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -5167,7 +5151,7 @@ namespace mhfz_quest_editor
             this.label45.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label45.Location = new System.Drawing.Point(175, 132);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(77, 23);
+            this.label45.Size = new System.Drawing.Size(87, 23);
             this.label45.TabIndex = 61;
             this.label45.Text = "Size";
             this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -5178,7 +5162,7 @@ namespace mhfz_quest_editor
             this.label44.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label44.Location = new System.Drawing.Point(175, 103);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(77, 23);
+            this.label44.Size = new System.Drawing.Size(87, 23);
             this.label44.TabIndex = 60;
             this.label44.Text = "Strength";
             this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -5188,7 +5172,7 @@ namespace mhfz_quest_editor
             this.comboBox11.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBox11.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Location = new System.Drawing.Point(258, 74);
+            this.comboBox11.Location = new System.Drawing.Point(268, 74);
             this.comboBox11.Name = "comboBox11";
             this.comboBox11.Size = new System.Drawing.Size(120, 23);
             this.comboBox11.TabIndex = 0;
@@ -5197,7 +5181,7 @@ namespace mhfz_quest_editor
             // 
             this.label60.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label60.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label60.Location = new System.Drawing.Point(58, 62);
+            this.label60.Location = new System.Drawing.Point(66, 62);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(478, 200);
             this.label60.TabIndex = 125;
@@ -5215,6 +5199,12 @@ namespace mhfz_quest_editor
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.numericUpDown18);
+            this.tabPage1.Controls.Add(this.label28);
+            this.tabPage1.Controls.Add(this.label27);
+            this.tabPage1.Controls.Add(this.numericUpDown17);
+            this.tabPage1.Controls.Add(this.comboBox6);
+            this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Controls.Add(this.numericUpDown16);
             this.tabPage1.Controls.Add(this.label29);
             this.tabPage1.Controls.Add(this.textBox19);
@@ -5271,9 +5261,98 @@ namespace mhfz_quest_editor
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // numericUpDown18
+            // 
+            this.numericUpDown18.Location = new System.Drawing.Point(704, 157);
+            this.numericUpDown18.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDown18.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown18.Name = "numericUpDown18";
+            this.numericUpDown18.Size = new System.Drawing.Size(171, 23);
+            this.numericUpDown18.TabIndex = 176;
+            this.numericUpDown18.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label28
+            // 
+            this.label28.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label28.Location = new System.Drawing.Point(564, 157);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(134, 23);
+            this.label28.TabIndex = 175;
+            this.label28.Text = "Difficulty level(★)";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label27
+            // 
+            this.label27.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label27.Location = new System.Drawing.Point(564, 129);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(134, 23);
+            this.label27.TabIndex = 174;
+            this.label27.Text = "Time(min)";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // numericUpDown17
+            // 
+            this.numericUpDown17.Location = new System.Drawing.Point(704, 129);
+            this.numericUpDown17.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.numericUpDown17.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown17.Name = "numericUpDown17";
+            this.numericUpDown17.Size = new System.Drawing.Size(171, 23);
+            this.numericUpDown17.TabIndex = 173;
+            this.numericUpDown17.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Items.AddRange(new object[] {
+            "None",
+            "Slay",
+            "Break part"});
+            this.comboBox6.Location = new System.Drawing.Point(704, 71);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(171, 23);
+            this.comboBox6.TabIndex = 172;
+            // 
+            // label26
+            // 
+            this.label26.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label26.Location = new System.Drawing.Point(564, 71);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(134, 23);
+            this.label26.TabIndex = 171;
+            this.label26.Text = "Another Target Type";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // numericUpDown16
             // 
-            this.numericUpDown16.Location = new System.Drawing.Point(683, 68);
+            this.numericUpDown16.Location = new System.Drawing.Point(704, 100);
             this.numericUpDown16.Maximum = new decimal(new int[] {
             10,
             0,
@@ -5287,11 +5366,11 @@ namespace mhfz_quest_editor
             // 
             this.label29.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label29.Location = new System.Drawing.Point(564, 68);
+            this.label29.Location = new System.Drawing.Point(564, 100);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(113, 23);
+            this.label29.Size = new System.Drawing.Size(134, 23);
             this.label29.TabIndex = 169;
-            this.label29.Text = "Another Tgt";
+            this.label29.Text = "Another Tgt Number";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox19
@@ -5333,7 +5412,7 @@ namespace mhfz_quest_editor
             "Main",
             "Both Main and A",
             "Main, A and B"});
-            this.comboBox3.Location = new System.Drawing.Point(683, 40);
+            this.comboBox3.Location = new System.Drawing.Point(704, 40);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(171, 23);
             this.comboBox3.TabIndex = 135;
@@ -5344,7 +5423,7 @@ namespace mhfz_quest_editor
             this.label73.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label73.Location = new System.Drawing.Point(564, 40);
             this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(113, 23);
+            this.label73.Size = new System.Drawing.Size(134, 23);
             this.label73.TabIndex = 134;
             this.label73.Text = "Clear Condition";
             this.label73.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -5832,6 +5911,22 @@ namespace mhfz_quest_editor
             this.tabControl1.Size = new System.Drawing.Size(1078, 801);
             this.tabControl1.TabIndex = 5;
             // 
+            // comboBox7
+            // 
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Items.AddRange(new object[] {
+            "Normal",
+            "HC",
+            "Geki",
+            "覇種",
+            "G",
+            "Zenith",
+            "Unknown"});
+            this.comboBox7.Location = new System.Drawing.Point(268, 219);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(120, 23);
+            this.comboBox7.TabIndex = 127;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -6079,13 +6174,14 @@ namespace mhfz_quest_editor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown101)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown100)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).EndInit();
@@ -6494,9 +6590,7 @@ namespace mhfz_quest_editor
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.Label label65;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.NumericUpDown numericUpDown12;
         private System.Windows.Forms.Label label49;
@@ -6597,6 +6691,13 @@ namespace mhfz_quest_editor
         private System.Windows.Forms.TextBox R2012;
         private System.Windows.Forms.TextBox R2011;
         private System.Windows.Forms.TextBox R2010;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.NumericUpDown numericUpDown17;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.NumericUpDown numericUpDown18;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.ComboBox comboBox7;
     }
 }
 

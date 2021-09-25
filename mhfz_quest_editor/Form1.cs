@@ -321,16 +321,32 @@ namespace mhfz_quest_editor
                     numericUpDown14.Value = BitConverter.ToInt32(ba, 84);
                     numericUpDown15.Value = BitConverter.ToInt32(ba, 88);
 
-                    //Load is g
-                    if (ba[337] == 10)
+                    //Load species
+                    switch (ba[337])
                     {
-                        radioButton1.Checked = true;
-                        radioButton2.Checked = false;
-                    } else
-                    {
-                        radioButton1.Checked = false;
-                        radioButton2.Checked = true;
+                        case 0:
+                            comboBox7.SelectedIndex = 0;
+                            break;
+                        case 1:
+                            comboBox7.SelectedIndex = 1;
+                            break;
+                        case 2:
+                            comboBox7.SelectedIndex = 2;
+                            break;
+                        case 9:
+                            comboBox7.SelectedIndex = 3;
+                            break;
+                        case 10:
+                            comboBox7.SelectedIndex = 4;
+                            break;
+                        case 16:
+                            comboBox7.SelectedIndex = 5;
+                            break;
+                        default :
+                            comboBox7.SelectedIndex = 6;
+                            break;
                     }
+
 
                     //Load clear condition
                     if (ba[264] == 2)
@@ -348,9 +364,26 @@ namespace mhfz_quest_editor
 
                     //chekc annother target
                     numericUpDown16.Value = BitConverter.ToInt32(ba, 132);
+                    if (BitConverter.ToInt16(ba, 128) == 4)
+                    {
+                        comboBox6.SelectedIndex = 1;
+                    }
+                    else if (BitConverter.ToInt16(ba, 128) == 5)
+                    {
+                        comboBox6.SelectedIndex = 2;
+                    } else
+                    {
+                        comboBox6.SelectedIndex = 0;
+                    }
 
 
-                    radioButton3.Checked = true;    //load suc
+                    //time
+                    numericUpDown17.Value = BitConverter.ToInt32(ba, 224) / 30 / 60;
+                    //star
+                    numericUpDown18.Value = Buffer.GetByte(ba, 196);
+
+
+                    radioButton3.Checked = true;    //is load suc
                     button2.Enabled = true;
                 }
                 else
@@ -978,13 +1011,29 @@ namespace mhfz_quest_editor
             eb2[72] = BitConverter.GetBytes(decimal.ToInt16(numericUpDown9.Value))[0];      //str
             eb2[68] = BitConverter.GetBytes(decimal.ToInt16(numericUpDown10.Value))[0];     //size
             eb2[70] = BitConverter.GetBytes(decimal.ToInt16(numericUpDown11.Value))[0];     //size range
-            if (radioButton1.Checked)
+            switch (comboBox7.SelectedIndex)
             {
-                eb2[337] = 10;
-            }
-            if (radioButton2.Checked)
-            {
-                eb2[337] = 0;
+                case 0:
+                    eb2[337] = 0;
+                    break;
+                case 1:
+                    eb2[337] = 1;
+                    break;
+                case 2:
+                    eb2[337] = 2;
+                    break;
+                case 3:
+                    eb2[337] = 9;
+                    break;
+                case 4:
+                    eb2[337] = 10;
+                    break;
+                case 5:
+                    eb2[337] = 16;
+                    break;
+                case 6:
+                    eb2[337] = 0;
+                    break;
             }
             eb2[92] = Convert.ToByte(List.Rank.FirstOrDefault(x => x.Value == comboBox4.Text).Key);     //carve rank
 
@@ -1021,13 +1070,28 @@ namespace mhfz_quest_editor
             //Another target
             if (!(numericUpDown16.Value == 0))
             {
-                eb2[128] = 4;
+                eb2[128] = BitConverter.GetBytes(comboBox6.SelectedIndex + 3)[0];
                 eb2[130] = Convert.ToByte(MonsID1, 16);
                 eb2[132] = BitConverter.GetBytes(decimal.ToInt16(numericUpDown16.Value))[0];
             }
+            else
+            {
+                eb2[128] = 0;
+                eb2[130] = 0;
+                eb2[132] = 0;
+            }
 
+            byte[] QuestTime = BitConverter.GetBytes(decimal.ToInt32(numericUpDown17.Value * 30 * 60));     //time
+            eb2[224] = QuestTime[0];
+            eb2[225] = QuestTime[1];
+            eb2[226] = QuestTime[2];
+            eb2[227] = QuestTime[3];
 
-                File.WriteAllBytes(path, eb2.ToArray());
+            byte[] NumStar = BitConverter.GetBytes(decimal.ToInt16(numericUpDown18.Value));     //difficulty
+            eb2[196] = NumStar[0];
+            eb2[197] = NumStar[1];
+
+            File.WriteAllBytes(path, eb2.ToArray());
         }
 
         private void button5_Click(object sender, EventArgs e)
