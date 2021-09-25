@@ -44,8 +44,8 @@ namespace mhfz_quest_editor
                     List.Rank.TryGetValue(ba[92], out string rank);                 //carve rank
                     comboBox4.Text = rank.ToString();
 
-                    numericUpDown1.Value = BitConverter.ToInt16(ba, 204);           //fee
-                    numericUpDown8.Value = BitConverter.ToInt16(ba, 212);           //penalty
+                    numericUpDown1.Value = BitConverter.ToInt32(ba, 204);           //fee
+                    numericUpDown8.Value = BitConverter.ToInt32(ba, 212);           //penalty
 
                     List.ObjectiveType1.TryGetValue(BitConverter.ToInt32(ba, 240), out string MainType);        //Load main obj type
                     comboBox8.Text = MainType;
@@ -60,7 +60,7 @@ namespace mhfz_quest_editor
                         textBox17.Text = MainObjTgt;
                     }
                     numericUpDown5.Value = BitConverter.ToInt16(ba, 246);           //amount
-                    numericUpDown2.Value = BitConverter.ToInt16(ba, 208);           //money
+                    numericUpDown2.Value = BitConverter.ToInt32(ba, 208);           //money
 
                     List.ObjectiveType1.TryGetValue(BitConverter.ToInt32(ba, 248), out string AType);
                     comboBox9.Text = AType;
@@ -75,7 +75,7 @@ namespace mhfz_quest_editor
                         textBox18.Text = AObjTgt;
                     }
                     numericUpDown6.Value = BitConverter.ToInt16(ba, 254);
-                    numericUpDown3.Value = BitConverter.ToInt16(ba, 216);
+                    numericUpDown3.Value = BitConverter.ToInt32(ba, 216);
 
                     List.ObjectiveType1.TryGetValue(BitConverter.ToInt32(ba, 256), out string BType);
                     comboBox10.Text = BType.ToString();
@@ -91,9 +91,9 @@ namespace mhfz_quest_editor
                         textBox19.Text = BObjTgt;
                     }
                     numericUpDown7.Value = BitConverter.ToInt16(ba, 262);       //amount
-                    numericUpDown4.Value = BitConverter.ToInt16(ba, 220);       //money
+                    numericUpDown4.Value = BitConverter.ToInt32(ba, 220);       //money
 
-                    if (BitConverter.ToInt32(ba, 240) == 32772)
+                    if (BitConverter.ToInt32(ba, 240) == 32772)     //if slay
                     {
                         numericUpDown5.Value = numericUpDown5.Value * 100;
                     }
@@ -325,16 +325,16 @@ namespace mhfz_quest_editor
                     switch (ba[337])
                     {
                         case 0:
-                            comboBox7.SelectedIndex = 0;
+                            comboBox7.SelectedIndex = 0;        //normal
                             break;
                         case 1:
-                            comboBox7.SelectedIndex = 1;
+                            comboBox7.SelectedIndex = 1;        //HC
                             break;
                         case 2:
-                            comboBox7.SelectedIndex = 2;
+                            comboBox7.SelectedIndex = 2;        //Geki
                             break;
                         case 9:
-                            comboBox7.SelectedIndex = 3;
+                            comboBox7.SelectedIndex = 3;        //Hasyu
                             break;
                         case 10:
                             comboBox7.SelectedIndex = 4;
