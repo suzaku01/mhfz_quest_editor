@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using Lib;
+using System.Collections;
 
 namespace mhfz_quest_editor
 {
@@ -17,6 +18,9 @@ namespace mhfz_quest_editor
             comboBox1.Items.AddRange(File.ReadAllLines("monster.txt"));
             comboBox2.Items.AddRange(File.ReadAllLines("item.txt"));
             comboBox11.Items.AddRange(File.ReadAllLines("monster.txt"));
+            comboBox17.Items.AddRange(File.ReadAllLines("monster.txt"));
+            comboBox19.Items.AddRange(File.ReadAllLines("monster.txt"));
+            comboBox21.Items.AddRange(File.ReadAllLines("monster.txt"));
             radioButton3.Checked = false;
             button2.Enabled = false;
         }
@@ -30,6 +34,11 @@ namespace mhfz_quest_editor
 
                 string fileloc = openFileDialog1.FileName;
                 byte[] ba = File.ReadAllBytes(fileloc);
+
+                comboBox12.Items.Clear();
+                comboBox18.Items.Clear();
+                comboBox20.Items.Clear();
+                comboBox22.Items.Clear();
 
                 if (ba[0] == 192)
                 {
@@ -198,8 +207,17 @@ namespace mhfz_quest_editor
 
                     for (int i = 0; i < 5; i++)
                     {
-                        switch (RewardHeaderArray[i * 8])
+                        int RewardHeader = RewardHeaderArray[i * 8];
+                        if (RewardHeader == 255)
                         {
+                            break;
+                        }
+                        switch (RewardHeader)
+                        {
+                            case 0:
+                                MRewardPointer = BitConverter.ToInt32(RewardHeaderArray, 4);
+                                MRewardData = ba.Skip(MRewardPointer).Take(244).ToArray();
+                                break;
                             case 1:
                                 MRewardPointer = BitConverter.ToInt32(RewardHeaderArray, 4);
                                 MRewardData = ba.Skip(MRewardPointer).Take(244).ToArray();
@@ -304,14 +322,79 @@ namespace mhfz_quest_editor
                         }
                     }
 
+
+
                     //Load large monster
-                    int MainMonsID = BitConverter.ToInt16(ba, (BitConverter.ToInt16(ba, 24) + 32));
-                    List.Monster1.TryGetValue(MainMonsID, out string MainMonsStr);
-                    comboBox11.Text = MainMonsStr;
+                    int MainMonsInfoStart = BitConverter.ToInt16(ba, 24) + 64;
+                    bool isEmpty1 = false;
+                    bool isEmpty2 = false;
+                    bool isEmpty3 = false;
+                    bool isEmpty4 = false;
+
+                    int MainMonsID1 = BitConverter.ToInt16(ba, (BitConverter.ToInt16(ba, 24) + 32));
+                    if (!(MainMonsID1 == 0))
+                    {
+                        List.Monster1.TryGetValue(MainMonsID1, out string MainMonsStr1);
+                        comboBox11.Text = MainMonsStr1;
+                        byte[] MainMonsData1 = ba.Skip(MainMonsInfoStart).Take(60).ToArray();
+                        comboBox12.Items.Add(BitConverter.ToInt16(MainMonsData1, 8).ToString("X2"));
+                        comboBox12.SelectedIndex = 0;
+
+                        int MainMonsInfoStart1 = BitConverter.ToInt16(ba, 24) + 64;
+                        byte[] templi = ba.Skip(MainMonsInfoStart1).Take(60).ToArray();
+                        textBox1.Text = BitConverter.ToString(templi).Replace("-", string.Empty);
+                    }
+                    else {comboBox11.Text = "None";isEmpty1 = true; }
+
+                    int MainMonsID2 = BitConverter.ToInt16(ba, (BitConverter.ToInt16(ba, 24) + 32 + 4));
+                    if (!(MainMonsID2 == 0))
+                    {
+                        List.Monster1.TryGetValue(MainMonsID2, out string MainMonsStr2);
+                        comboBox17.Text = MainMonsStr2;
+                        byte[] MainMonsData2 = ba.Skip(MainMonsInfoStart+60).Take(60).ToArray();
+                        comboBox18.Items.Add(BitConverter.ToInt16(MainMonsData2, 8).ToString("X2"));
+                        comboBox18.SelectedIndex = 0;
+                    }
+                    else 
+                    { 
+                        comboBox17.Text = "None";
+                        isEmpty2 = true;
+                    }
+
+                    int MainMonsID3 = BitConverter.ToInt16(ba, (BitConverter.ToInt16(ba, 24) + 32 + 8));
+                    if (!(MainMonsID3 == 0))
+                    {
+                        List.Monster1.TryGetValue(MainMonsID3, out string MainMonsStr3);
+                        comboBox19.Text = MainMonsStr3;
+                        byte[] MainMonsData3 = File.ReadAllBytes(fileloc).Skip(MainMonsInfoStart+120).Take(60).ToArray();
+                        comboBox20.Items.Add(BitConverter.ToInt16(MainMonsData3, 8).ToString("X2"));
+                        comboBox20.SelectedIndex = 0;
+                    }
+                    else { comboBox19.Text = "None"; isEmpty3 = true; }
+
+                    int MainMonsID4 = BitConverter.ToInt16(ba, (BitConverter.ToInt16(ba, 24) + 32 + 12));
+                    if (!(MainMonsID4 == 0))
+                    {
+                        List.Monster1.TryGetValue(MainMonsID4, out string MainMonsStr4);
+                        comboBox21.Text = MainMonsStr4;
+                        byte[] MainMonsData4 = File.ReadAllBytes(fileloc).Skip(MainMonsInfoStart+180).Take(60).ToArray();
+                        comboBox22.Items.Add(BitConverter.ToInt16(MainMonsData4, 8).ToString("X2"));
+                        comboBox22.SelectedIndex = 0;
+                    }
+                    else { comboBox21.Text = "None"; isEmpty4 = true; }
+
+
 
                     numericUpDown9.Value = BitConverter.ToInt16(ba, 72);    //str
                     numericUpDown10.Value = BitConverter.ToInt16(ba, 68);   //size
                     numericUpDown11.Value = BitConverter.ToInt16(ba, 70);   //size range
+
+                    int MainMonsSpawnArea = BitConverter.ToInt16(ba, (BitConverter.ToInt16(ba, 24) + 72));
+                    List.AreaID.TryGetValue(MainMonsSpawnArea, out string MainMonsSpawnArea1);
+                    //int index = comboBox12.Items.IndexOf(MainMonsSpawnArea1);
+                    //comboBox12.SelectedIndex = index;
+                    //int index = comboBox12.Items.IndexOf(MainMonsSpawnArea1);
+                    //comboBox12.SelectedIndex = comboBox12.Items.IndexOf(MainMonsSpawnArea1);
 
                     //Load small monster
                     numericUpDown12.Value = BitConverter.ToInt16(ba, 97);
@@ -381,6 +464,52 @@ namespace mhfz_quest_editor
                     numericUpDown17.Value = BitConverter.ToInt32(ba, 224) / 30 / 60;
                     //star
                     numericUpDown18.Value = Buffer.GetByte(ba, 196);
+
+                    //load area
+                    for (int y = 0; y < 1; y++)
+                    {
+                        int AreaIDPointer = BitConverter.ToInt16(ba, 20);
+                        int AreaIDPointer1 = BitConverter.ToInt16(ba, AreaIDPointer);
+                        if (AreaIDPointer1 == 0)
+                        {
+                            break;
+                        }
+                      
+                        for (int i = 0; i < 15; i++)
+                        {
+                            int AreaIDmulti = i * 16;
+                            int AreaID = BitConverter.ToInt16(ba, AreaIDPointer1 + AreaIDmulti);
+                            if (AreaID == 0)
+                            {
+                                break;
+                            }
+                            comboBox12.Items.Add(AreaID.ToString("X2"));
+                            comboBox18.Items.Add(AreaID.ToString("X2"));
+                            comboBox20.Items.Add(AreaID.ToString("X2"));
+                            comboBox22.Items.Add(AreaID.ToString("X2"));
+                        }
+                    }
+                    if (isEmpty1)
+                    {
+                        comboBox12.Items.Add(BitConverter.ToInt16(ba, 544));
+                        comboBox12.SelectedIndex = 0;
+                    }
+                    if (isEmpty2)
+                    {
+                        comboBox18.Items.Add(BitConverter.ToInt16(ba, 544));
+                        comboBox18.SelectedIndex = 0;
+                    }
+                    if (isEmpty3)
+                    {
+                        comboBox20.Items.Add(BitConverter.ToInt16(ba, 544));
+                        comboBox20.SelectedIndex = 0;
+                    }
+                    if (isEmpty4)
+                    {
+                        comboBox22.Items.Add(BitConverter.ToInt16(ba, 544));
+                        comboBox22.SelectedIndex = 0;
+                    }
+
 
 
                     radioButton3.Checked = true;    //is load suc
@@ -857,6 +986,106 @@ namespace mhfz_quest_editor
             }
             EntireBytes.AddRange(Temprewardarray);
 
+            //Lrg mosnter
+            int tempnum = EntireBytes.Count;
+            byte[] tempnum1 = BitConverter.GetBytes(Convert.ToInt16(tempnum));
+            EntireBytes[24] = tempnum1[0];  //replace new header
+            EntireBytes[25] = tempnum1[1];
+
+            byte[] tempLMinfo = { 01, 00, 00, 00, 00, 00, 00, 00, 00, 10, 00, 00, 20, 10, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00 };
+
+            tempnum = (EntireBytes.Count) + 32;
+            tempnum1 = BitConverter.GetBytes(Convert.ToInt16(tempnum));
+            tempLMinfo[8] = tempnum1[0];        //replace new header
+            tempLMinfo[9] = tempnum1[1];
+
+            tempnum = tempnum + 32;
+            tempnum1 = BitConverter.GetBytes(Convert.ToInt16(tempnum));
+            tempLMinfo[12] = tempnum1[0];       //replace new header
+            tempLMinfo[13] = tempnum1[1];
+            EntireBytes.AddRange(tempLMinfo);
+
+            string templateMonsterHexData = textBox1.Text;
+            var templateMonsterData = new List<byte>();
+            for (int i = 0; i < templateMonsterHexData.Length / 2; i++)
+            {
+                templateMonsterData.Add(Convert.ToByte(templateMonsterHexData.Substring(i * 2, 2), 16));
+            }
+
+            byte[] tempLMinfotemo = { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 255, 255, 255, 255, 255, 255, 255, 255, 00, 00, 00, 00 };
+            var tempLmdata = new List<byte>();
+
+            int LMons1 = List.Monster1.FirstOrDefault(x => x.Value == comboBox11.Text).Key;
+            tempLMinfotemo[0] = BitConverter.GetBytes(LMons1)[0];
+            byte[] templateMonsterData1 = new byte[60];
+            templateMonsterData.CopyTo(templateMonsterData1, 0);
+            templateMonsterData1[0] = BitConverter.GetBytes(LMons1)[0];
+
+                string input1 = comboBox12.Text;
+                var areaid1 = new List<byte>();
+                for (int i = 0; i < input1.Length / 2; i++)
+                {
+                    areaid1.Add(Convert.ToByte(input1.Substring(i * 2, 2), 16));
+                }
+
+
+            int LMons2 = List.Monster1.FirstOrDefault(x => x.Value == comboBox17.Text).Key;
+            tempLMinfotemo[4] = BitConverter.GetBytes(LMons2)[0];
+            byte[] templateMonsterData2 = new byte[60];
+            templateMonsterData.CopyTo(templateMonsterData2, 0);
+            templateMonsterData2[0] = BitConverter.GetBytes(LMons2)[0];
+
+                string input2 = comboBox18.Text;
+                var areaid2 = new List<byte>();
+                for (int i = 0; i < input2.Length / 2; i++)
+                {
+                    areaid2.Add(Convert.ToByte(input2.Substring(i * 2, 2), 16));
+                }
+                templateMonsterData2[8] = areaid2[0];
+
+
+            int LMons3 = List.Monster1.FirstOrDefault(x => x.Value == comboBox19.Text).Key;
+            tempLMinfotemo[8] = BitConverter.GetBytes(LMons3)[0];
+            byte[] templateMonsterData3 = new byte[60];
+            templateMonsterData.CopyTo(templateMonsterData3, 0);
+            templateMonsterData3[0] = BitConverter.GetBytes(LMons3)[0];
+
+                string input3 = comboBox20.Text;
+                var areaid3 = new List<byte>();
+                for (int i = 0; i < input3.Length / 2; i++)
+                {
+                    areaid3.Add(Convert.ToByte(input3.Substring(i * 2, 2), 16));
+                }
+                templateMonsterData3[8] = areaid3[0];
+
+
+
+            int LMons4 = List.Monster1.FirstOrDefault(x => x.Value == comboBox21.Text).Key;
+            tempLMinfotemo[12] = BitConverter.GetBytes(LMons4)[0];
+            byte[] templateMonsterData4 = new byte[60];
+            templateMonsterData.CopyTo(templateMonsterData4, 0);
+            templateMonsterData4[0] = BitConverter.GetBytes(LMons4)[0];
+
+                string input4 = comboBox22.Text;
+                var areaid4 = new List<byte>();
+                for (int i = 0; i < input4.Length / 2; i++)
+                {
+                    areaid4.Add(Convert.ToByte(input4.Substring(i * 2, 2), 16));
+                }
+                templateMonsterData4[8] = areaid4[0];
+
+
+            EntireBytes.AddRange(tempLMinfotemo);
+            EntireBytes.AddRange(templateMonsterData1);
+            EntireBytes.AddRange(templateMonsterData2);
+            EntireBytes.AddRange(templateMonsterData3);
+            EntireBytes.AddRange(templateMonsterData4);
+            EntireBytes.AddRange(Endofline);
+
+
+
+
+
 
 
 
@@ -947,6 +1176,7 @@ namespace mhfz_quest_editor
                 {
                     string subatt = List.Monster.FirstOrDefault(x => x.Value == textBox18.Text).Key;
                     eb2[252] = Convert.ToByte(subatt, 16);
+                    eb2[253] = 0;
                 }
 
                 decimal AAmount = numericUpDown6.Value;
@@ -969,22 +1199,23 @@ namespace mhfz_quest_editor
             if (!(subbt == "00000000"))
             {
                 byte[] subbdata = Enumerable.Range(0, subbt.Length).Where(x => x % 2 == 0).Select(x => Convert.ToByte(subbt.Substring(x, 2), 16)).ToArray();
-                eb2[248] = subbdata[0];
-                eb2[249] = subbdata[1];
-                eb2[250] = subbdata[2];
-                eb2[251] = subbdata[3];
+                eb2[256] = subbdata[0];
+                eb2[257] = subbdata[1];
+                eb2[258] = subbdata[2];
+                eb2[259] = subbdata[3];
 
                 if (subbdata[0] == 02 & subbdata[1] == 00)
                 {
                     int subbtt = List.Item.FirstOrDefault(x => x.Value == textBox19.Text).Key;
                     byte[] subbitem = BitConverter.GetBytes(subbtt);
-                    eb2[252] = subbitem[0];
-                    eb2[253] = subbitem[1];
+                    eb2[260] = subbitem[0];
+                    eb2[261] = subbitem[1];
                 }
                 else
                 {
                     string subbtt = List.Monster.FirstOrDefault(x => x.Value == textBox19.Text).Key;
-                    eb2[252] = Convert.ToByte(subbtt, 16);
+                    eb2[260] = Convert.ToByte(subbtt, 16);
+                    eb2[261] = 0;
                 }
 
                 decimal BAmount = numericUpDown7.Value;

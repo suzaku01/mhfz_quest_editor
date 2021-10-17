@@ -58,6 +58,7 @@ namespace mhfz_quest_editor
             this.label18 = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -448,6 +449,29 @@ namespace mhfz_quest_editor
             this.label64 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.comboBox21 = new System.Windows.Forms.ComboBox();
+            this.label99 = new System.Windows.Forms.Label();
+            this.comboBox22 = new System.Windows.Forms.ComboBox();
+            this.label100 = new System.Windows.Forms.Label();
+            this.label101 = new System.Windows.Forms.Label();
+            this.label102 = new System.Windows.Forms.Label();
+            this.comboBox19 = new System.Windows.Forms.ComboBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.comboBox20 = new System.Windows.Forms.ComboBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label97 = new System.Windows.Forms.Label();
+            this.label98 = new System.Windows.Forms.Label();
+            this.comboBox17 = new System.Windows.Forms.ComboBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.comboBox18 = new System.Windows.Forms.ComboBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.label95 = new System.Windows.Forms.Label();
+            this.label96 = new System.Windows.Forms.Label();
+            this.comboBox11 = new System.Windows.Forms.ComboBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.comboBox12 = new System.Windows.Forms.ComboBox();
+            this.label67 = new System.Windows.Forms.Label();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.label51 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
@@ -462,9 +486,9 @@ namespace mhfz_quest_editor
             this.label46 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
-            this.comboBox11 = new System.Windows.Forms.ComboBox();
             this.label60 = new System.Windows.Forms.Label();
             this.label61 = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.numericUpDown18 = new System.Windows.Forms.NumericUpDown();
             this.label28 = new System.Windows.Forms.Label();
@@ -520,7 +544,6 @@ namespace mhfz_quest_editor
             this.label19 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.tabPage9.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -1043,6 +1066,7 @@ namespace mhfz_quest_editor
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.textBox1);
             this.tabPage4.Controls.Add(this.textBox20);
             this.tabPage4.Controls.Add(this.radioButton4);
             this.tabPage4.Controls.Add(this.radioButton3);
@@ -1055,6 +1079,17 @@ namespace mhfz_quest_editor
             this.tabPage4.Text = "Debug";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(15, 72);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(1055, 35);
+            this.textBox1.TabIndex = 83;
+            // 
             // textBox20
             // 
             this.textBox20.Enabled = false;
@@ -1063,7 +1098,7 @@ namespace mhfz_quest_editor
             this.textBox20.Name = "textBox20";
             this.textBox20.ReadOnly = true;
             this.textBox20.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox20.Size = new System.Drawing.Size(1055, 192);
+            this.textBox20.Size = new System.Drawing.Size(1055, 35);
             this.textBox20.TabIndex = 82;
             // 
             // radioButton4
@@ -4964,6 +4999,28 @@ namespace mhfz_quest_editor
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
+            this.tabPage2.Controls.Add(this.comboBox21);
+            this.tabPage2.Controls.Add(this.label99);
+            this.tabPage2.Controls.Add(this.comboBox22);
+            this.tabPage2.Controls.Add(this.label100);
+            this.tabPage2.Controls.Add(this.label101);
+            this.tabPage2.Controls.Add(this.label102);
+            this.tabPage2.Controls.Add(this.comboBox19);
+            this.tabPage2.Controls.Add(this.label80);
+            this.tabPage2.Controls.Add(this.comboBox20);
+            this.tabPage2.Controls.Add(this.label81);
+            this.tabPage2.Controls.Add(this.label97);
+            this.tabPage2.Controls.Add(this.label98);
+            this.tabPage2.Controls.Add(this.comboBox17);
+            this.tabPage2.Controls.Add(this.label79);
+            this.tabPage2.Controls.Add(this.comboBox18);
+            this.tabPage2.Controls.Add(this.label82);
+            this.tabPage2.Controls.Add(this.label95);
+            this.tabPage2.Controls.Add(this.label96);
+            this.tabPage2.Controls.Add(this.comboBox11);
+            this.tabPage2.Controls.Add(this.label78);
+            this.tabPage2.Controls.Add(this.comboBox12);
+            this.tabPage2.Controls.Add(this.label67);
             this.tabPage2.Controls.Add(this.comboBox7);
             this.tabPage2.Controls.Add(this.label51);
             this.tabPage2.Controls.Add(this.label50);
@@ -4979,9 +5036,9 @@ namespace mhfz_quest_editor
             this.tabPage2.Controls.Add(this.label46);
             this.tabPage2.Controls.Add(this.label45);
             this.tabPage2.Controls.Add(this.label44);
-            this.tabPage2.Controls.Add(this.comboBox11);
             this.tabPage2.Controls.Add(this.label60);
             this.tabPage2.Controls.Add(this.label61);
+            this.tabPage2.Controls.Add(this.label77);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -4990,11 +5047,242 @@ namespace mhfz_quest_editor
             this.tabPage2.Text = "Monster";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // comboBox21
+            // 
+            this.comboBox21.FormattingEnabled = true;
+            this.comboBox21.Location = new System.Drawing.Point(288, 449);
+            this.comboBox21.Name = "comboBox21";
+            this.comboBox21.Size = new System.Drawing.Size(120, 23);
+            this.comboBox21.TabIndex = 153;
+            // 
+            // label99
+            // 
+            this.label99.BackColor = System.Drawing.Color.LightYellow;
+            this.label99.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label99.Location = new System.Drawing.Point(52, 449);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(137, 22);
+            this.label99.TabIndex = 152;
+            this.label99.Text = "Large Monster 4";
+            this.label99.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBox22
+            // 
+            this.comboBox22.FormattingEnabled = true;
+            this.comboBox22.Location = new System.Drawing.Point(288, 478);
+            this.comboBox22.Name = "comboBox22";
+            this.comboBox22.Size = new System.Drawing.Size(120, 23);
+            this.comboBox22.TabIndex = 150;
+            // 
+            // label100
+            // 
+            this.label100.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label100.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label100.Location = new System.Drawing.Point(195, 478);
+            this.label100.Name = "label100";
+            this.label100.Size = new System.Drawing.Size(87, 23);
+            this.label100.TabIndex = 149;
+            this.label100.Text = "Spawn Area";
+            this.label100.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label101
+            // 
+            this.label101.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label101.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label101.Location = new System.Drawing.Point(195, 449);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(87, 23);
+            this.label101.TabIndex = 148;
+            this.label101.Text = "Monster";
+            this.label101.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label102
+            // 
+            this.label102.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label102.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label102.Location = new System.Drawing.Point(42, 439);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(478, 74);
+            this.label102.TabIndex = 151;
+            this.label102.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // comboBox19
+            // 
+            this.comboBox19.FormattingEnabled = true;
+            this.comboBox19.Location = new System.Drawing.Point(288, 366);
+            this.comboBox19.Name = "comboBox19";
+            this.comboBox19.Size = new System.Drawing.Size(120, 23);
+            this.comboBox19.TabIndex = 147;
+            // 
+            // label80
+            // 
+            this.label80.BackColor = System.Drawing.Color.LightYellow;
+            this.label80.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label80.Location = new System.Drawing.Point(52, 366);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(137, 22);
+            this.label80.TabIndex = 146;
+            this.label80.Text = "Large Monster 3";
+            this.label80.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBox20
+            // 
+            this.comboBox20.FormattingEnabled = true;
+            this.comboBox20.Location = new System.Drawing.Point(288, 395);
+            this.comboBox20.Name = "comboBox20";
+            this.comboBox20.Size = new System.Drawing.Size(120, 23);
+            this.comboBox20.TabIndex = 144;
+            // 
+            // label81
+            // 
+            this.label81.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label81.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label81.Location = new System.Drawing.Point(195, 395);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(87, 23);
+            this.label81.TabIndex = 143;
+            this.label81.Text = "Spawn Area";
+            this.label81.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label97
+            // 
+            this.label97.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label97.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label97.Location = new System.Drawing.Point(195, 366);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(87, 23);
+            this.label97.TabIndex = 142;
+            this.label97.Text = "Monster";
+            this.label97.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label98
+            // 
+            this.label98.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label98.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label98.Location = new System.Drawing.Point(42, 356);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(478, 74);
+            this.label98.TabIndex = 145;
+            this.label98.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // comboBox17
+            // 
+            this.comboBox17.FormattingEnabled = true;
+            this.comboBox17.Location = new System.Drawing.Point(288, 281);
+            this.comboBox17.Name = "comboBox17";
+            this.comboBox17.Size = new System.Drawing.Size(120, 23);
+            this.comboBox17.TabIndex = 141;
+            // 
+            // label79
+            // 
+            this.label79.BackColor = System.Drawing.Color.LightYellow;
+            this.label79.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label79.Location = new System.Drawing.Point(52, 281);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(137, 22);
+            this.label79.TabIndex = 140;
+            this.label79.Text = "Large Monster 2";
+            this.label79.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBox18
+            // 
+            this.comboBox18.FormattingEnabled = true;
+            this.comboBox18.Location = new System.Drawing.Point(288, 310);
+            this.comboBox18.Name = "comboBox18";
+            this.comboBox18.Size = new System.Drawing.Size(120, 23);
+            this.comboBox18.TabIndex = 138;
+            // 
+            // label82
+            // 
+            this.label82.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label82.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label82.Location = new System.Drawing.Point(195, 310);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(87, 23);
+            this.label82.TabIndex = 137;
+            this.label82.Text = "Spawn Area";
+            this.label82.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label95
+            // 
+            this.label95.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label95.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label95.Location = new System.Drawing.Point(195, 281);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(87, 23);
+            this.label95.TabIndex = 136;
+            this.label95.Text = "Monster";
+            this.label95.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label96
+            // 
+            this.label96.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label96.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label96.Location = new System.Drawing.Point(42, 271);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(478, 74);
+            this.label96.TabIndex = 139;
+            this.label96.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // comboBox11
+            // 
+            this.comboBox11.FormattingEnabled = true;
+            this.comboBox11.Location = new System.Drawing.Point(288, 198);
+            this.comboBox11.Name = "comboBox11";
+            this.comboBox11.Size = new System.Drawing.Size(120, 23);
+            this.comboBox11.TabIndex = 135;
+            // 
+            // label78
+            // 
+            this.label78.BackColor = System.Drawing.Color.LightYellow;
+            this.label78.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label78.Location = new System.Drawing.Point(52, 198);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(137, 22);
+            this.label78.TabIndex = 131;
+            this.label78.Text = "Large Monster 1";
+            this.label78.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBox12
+            // 
+            this.comboBox12.FormattingEnabled = true;
+            this.comboBox12.Location = new System.Drawing.Point(288, 227);
+            this.comboBox12.Name = "comboBox12";
+            this.comboBox12.Size = new System.Drawing.Size(120, 23);
+            this.comboBox12.TabIndex = 129;
+            // 
+            // label67
+            // 
+            this.label67.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label67.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label67.Location = new System.Drawing.Point(195, 227);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(87, 23);
+            this.label67.TabIndex = 128;
+            this.label67.Text = "Spawn Area";
+            this.label67.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Items.AddRange(new object[] {
+            "Normal",
+            "HC",
+            "Geki",
+            "覇種",
+            "G",
+            "Zenith",
+            "Unknown"});
+            this.comboBox7.Location = new System.Drawing.Point(288, 140);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(120, 23);
+            this.comboBox7.TabIndex = 127;
+            // 
             // label51
             // 
             this.label51.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label51.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label51.Location = new System.Drawing.Point(175, 219);
+            this.label51.Location = new System.Drawing.Point(195, 140);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(87, 23);
             this.label51.TabIndex = 123;
@@ -5005,7 +5293,7 @@ namespace mhfz_quest_editor
             // 
             this.label50.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label50.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label50.Location = new System.Drawing.Point(175, 74);
+            this.label50.Location = new System.Drawing.Point(195, 198);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(87, 23);
             this.label50.TabIndex = 120;
@@ -5014,7 +5302,7 @@ namespace mhfz_quest_editor
             // 
             // numericUpDown12
             // 
-            this.numericUpDown12.Location = new System.Drawing.Point(769, 74);
+            this.numericUpDown12.Location = new System.Drawing.Point(812, 24);
             this.numericUpDown12.Maximum = new decimal(new int[] {
             99,
             0,
@@ -5028,7 +5316,7 @@ namespace mhfz_quest_editor
             // 
             this.label49.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label49.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label49.Location = new System.Drawing.Point(686, 74);
+            this.label49.Location = new System.Drawing.Point(729, 24);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(77, 23);
             this.label49.TabIndex = 118;
@@ -5039,11 +5327,11 @@ namespace mhfz_quest_editor
             // 
             this.label13.BackColor = System.Drawing.Color.LightYellow;
             this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.Location = new System.Drawing.Point(587, 74);
+            this.label13.Location = new System.Drawing.Point(586, 24);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(93, 22);
+            this.label13.Size = new System.Drawing.Size(137, 22);
             this.label13.TabIndex = 117;
-            this.label13.Text = "Small Monster";
+            this.label13.Text = "Small Monster Setting";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // comboBox4
@@ -5056,14 +5344,14 @@ namespace mhfz_quest_editor
             "Training",
             "G",
             "Zenith"});
-            this.comboBox4.Location = new System.Drawing.Point(268, 190);
+            this.comboBox4.Location = new System.Drawing.Point(288, 111);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(120, 23);
             this.comboBox4.TabIndex = 115;
             // 
             // numericUpDown11
             // 
-            this.numericUpDown11.Location = new System.Drawing.Point(268, 161);
+            this.numericUpDown11.Location = new System.Drawing.Point(288, 82);
             this.numericUpDown11.Maximum = new decimal(new int[] {
             4,
             0,
@@ -5082,7 +5370,7 @@ namespace mhfz_quest_editor
             // 
             this.label48.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label48.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label48.Location = new System.Drawing.Point(175, 161);
+            this.label48.Location = new System.Drawing.Point(195, 82);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(87, 23);
             this.label48.TabIndex = 113;
@@ -5093,16 +5381,16 @@ namespace mhfz_quest_editor
             // 
             this.label47.BackColor = System.Drawing.Color.LightYellow;
             this.label47.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label47.Location = new System.Drawing.Point(76, 74);
+            this.label47.Location = new System.Drawing.Point(52, 24);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(93, 22);
+            this.label47.Size = new System.Drawing.Size(137, 22);
             this.label47.TabIndex = 112;
-            this.label47.Text = "Large Monster";
+            this.label47.Text = "Large Monster Settings";
             this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numericUpDown10
             // 
-            this.numericUpDown10.Location = new System.Drawing.Point(268, 132);
+            this.numericUpDown10.Location = new System.Drawing.Point(288, 53);
             this.numericUpDown10.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -5124,7 +5412,7 @@ namespace mhfz_quest_editor
             // 
             // numericUpDown9
             // 
-            this.numericUpDown9.Location = new System.Drawing.Point(268, 103);
+            this.numericUpDown9.Location = new System.Drawing.Point(288, 24);
             this.numericUpDown9.Maximum = new decimal(new int[] {
             73,
             0,
@@ -5138,7 +5426,7 @@ namespace mhfz_quest_editor
             // 
             this.label46.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label46.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label46.Location = new System.Drawing.Point(175, 190);
+            this.label46.Location = new System.Drawing.Point(195, 111);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(87, 23);
             this.label46.TabIndex = 62;
@@ -5149,7 +5437,7 @@ namespace mhfz_quest_editor
             // 
             this.label45.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label45.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label45.Location = new System.Drawing.Point(175, 132);
+            this.label45.Location = new System.Drawing.Point(195, 53);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(87, 23);
             this.label45.TabIndex = 61;
@@ -5160,30 +5448,20 @@ namespace mhfz_quest_editor
             // 
             this.label44.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label44.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label44.Location = new System.Drawing.Point(175, 103);
+            this.label44.Location = new System.Drawing.Point(195, 24);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(87, 23);
             this.label44.TabIndex = 60;
             this.label44.Text = "Strength";
             this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox11
-            // 
-            this.comboBox11.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox11.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Location = new System.Drawing.Point(268, 74);
-            this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(120, 23);
-            this.comboBox11.TabIndex = 0;
-            // 
             // label60
             // 
             this.label60.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label60.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label60.Location = new System.Drawing.Point(66, 62);
+            this.label60.Location = new System.Drawing.Point(42, 12);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(478, 200);
+            this.label60.Size = new System.Drawing.Size(478, 165);
             this.label60.TabIndex = 125;
             this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -5191,11 +5469,21 @@ namespace mhfz_quest_editor
             // 
             this.label61.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label61.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label61.Location = new System.Drawing.Point(561, 62);
+            this.label61.Location = new System.Drawing.Point(560, 12);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(481, 200);
+            this.label61.Size = new System.Drawing.Size(481, 50);
             this.label61.TabIndex = 126;
             this.label61.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label77
+            // 
+            this.label77.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label77.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label77.Location = new System.Drawing.Point(42, 188);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(478, 74);
+            this.label77.TabIndex = 130;
+            this.label77.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabPage1
             // 
@@ -5911,22 +6199,6 @@ namespace mhfz_quest_editor
             this.tabControl1.Size = new System.Drawing.Size(1078, 801);
             this.tabControl1.TabIndex = 5;
             // 
-            // comboBox7
-            // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Items.AddRange(new object[] {
-            "Normal",
-            "HC",
-            "Geki",
-            "覇種",
-            "G",
-            "Zenith",
-            "Unknown"});
-            this.comboBox7.Location = new System.Drawing.Point(268, 219);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(120, 23);
-            this.comboBox7.TabIndex = 127;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -6604,7 +6876,6 @@ namespace mhfz_quest_editor
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.ComboBox comboBox11;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.TabPage tabPage1;
@@ -6698,6 +6969,30 @@ namespace mhfz_quest_editor
         private System.Windows.Forms.NumericUpDown numericUpDown18;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox comboBox12;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.ComboBox comboBox11;
+        private System.Windows.Forms.ComboBox comboBox21;
+        private System.Windows.Forms.Label label99;
+        private System.Windows.Forms.ComboBox comboBox22;
+        private System.Windows.Forms.Label label100;
+        private System.Windows.Forms.Label label101;
+        private System.Windows.Forms.Label label102;
+        private System.Windows.Forms.ComboBox comboBox19;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.ComboBox comboBox20;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Label label97;
+        private System.Windows.Forms.Label label98;
+        private System.Windows.Forms.ComboBox comboBox17;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.ComboBox comboBox18;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.Label label95;
+        private System.Windows.Forms.Label label96;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
