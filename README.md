@@ -1,5 +1,5 @@
 # mhfz_quest_editor
-***This repository is private, and still WIP. If you have a problem or any suggestion feel free to open an issue, or send DM on discord.***
+~~***This repository is private, and still WIP. If you have a problem or any suggestion feel free to open an issue, or send DM on discord.***~~
 
 # Description
 Enable you to edit MHF-Z quest file.
